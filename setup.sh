@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# 7fchain testnet miner — one-shot setup.
+# 7fchain testnet miner - one-shot setup.
 #
 # Run this once after unzipping the release bundle. It:
-#   1. checks you're on Linux x86_64,
+#   1. checks your platform (Linux x86_64/aarch64 or macOS arm64/x86_64),
 #   2. installs the sf-node / sf-wallet / sf-explorer programs to ~/.local/bin,
 #   3. creates your node home at ~/7fchain/testnet/l1/, and
 #   4. copies the public network files (genesis + dev-fund configs) into place.
 #
 # Your certificate AND the chain that validates it come from the registrar when
-# you buy your $0.70 testnet cert (step 3 of docs/become-a-miner.md) — not from
-# this bundle — so they are not installed here; intermediate-certs/ is left empty
+# you buy your $0.70 testnet cert (step 3 of docs/become-a-miner.md) -not from
+# this bundle -so they are not installed here; intermediate-certs/ is left empty
 # for you to drop the returned chain into.
 #
 # After it finishes, follow docs/become-a-miner.md: create a wallet, make a
@@ -42,24 +42,25 @@ ASSETS="$BUNDLE_DIR/testnet-assets"
 
 # -------------------- preflight --------------------
 step "0. Preflight"
-if [ "$(uname -s)" != "Linux" ]; then
-  err "this installer is Linux-only (you are on $(uname -s))."
-  err "On Windows, install Ubuntu via WSL first (see docs/become-a-miner.md)."
-  exit 1
-fi
-if [ "$(uname -m)" != "x86_64" ]; then
-  err "the current build is x86_64-only (you are on $(uname -m)); ARM/macOS builds are coming soon."
-  exit 1
-fi
+OS="$(uname -s)"
+ARCH="$(uname -m)"
+case "$OS" in
+  Linux|Darwin) ;;
+  *)
+    err "unsupported OS: $OS"
+    err "On Windows, install Ubuntu via WSL first (see docs/become-a-miner.md)."
+    exit 1
+    ;;
+esac
 if [ ! -f "$BIN_SRC/sf-node" ] || [ ! -f "$BIN_SRC/sf-wallet" ]; then
-  err "binaries not found (looked in $BUNDLE_DIR/bin and $BUNDLE_DIR) — bundle looks incomplete."
+  err "binaries not found (looked in $BUNDLE_DIR/bin and $BUNDLE_DIR) - bundle looks incomplete."
   exit 1
 fi
 if [ ! -d "$ASSETS" ]; then
-  err "testnet-assets/ not found next to setup.sh — bundle looks incomplete."
+  err "testnet-assets/ not found next to setup.sh - bundle looks incomplete."
   exit 1
 fi
-info "Linux x86_64, binaries, and testnet-assets all present."
+info "$OS $ARCH - binaries and testnet-assets present."
 
 # -------------------- directories --------------------
 step "1. Create node home: $HOME_DIR"
@@ -73,15 +74,18 @@ for b in sf-node sf-wallet sf-explorer; do
   if [ -f "$BIN_SRC/$b" ]; then
     cp "$BIN_SRC/$b" "$BIN_DIR/$b"; chmod +x "$BIN_DIR/$b"; info "installed $b"
   else
-    warn "$b not in bundle — skipping"
+    warn "$b not in bundle -skipping"
   fi
 done
 if ! printf '%s' ":$PATH:" | grep -q ":$BIN_DIR:"; then
-  if ! grep -qsE 'PATH=.*\.local/bin' "$HOME/.bashrc" 2>/dev/null; then
-    printf '\n# Added by 7fchain setup.sh\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$HOME/.bashrc"
-    info "added $BIN_DIR to PATH in ~/.bashrc"
+  # macOS defaults to zsh; Linux to bash
+  SHELL_RC="$HOME/.bashrc"
+  [ "$OS" = "Darwin" ] && SHELL_RC="$HOME/.zshrc"
+  if ! grep -qsE 'PATH=.*\.local/bin' "$SHELL_RC" 2>/dev/null; then
+    printf '\n# Added by 7fchain setup.sh\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$SHELL_RC"
+    info "added $BIN_DIR to PATH in $SHELL_RC"
   fi
-  warn "$BIN_DIR is not on PATH in this shell yet — open a new terminal, or run:"
+  warn "$BIN_DIR is not on PATH in this shell yet - open a new terminal, or run:"
   warn "  export PATH=\"$BIN_DIR:\$PATH\""
 else
   info "$BIN_DIR already on PATH"
@@ -99,7 +103,7 @@ copy_into() { # <src-glob-dir> <dest-dir> <label>
 }
 copy_into "$ASSETS/genesis-configs" "$HOME_DIR/genesis-configs" "genesis-configs"
 copy_into "$ASSETS/devfund-configs" "$HOME_DIR/devfund-configs" "devfund-configs"
-info "intermediate-certs/ left empty — your registrar returns the chain with your certificate"
+info "intermediate-certs/ left empty -your registrar returns the chain with your certificate"
 shopt -u nullglob
 
 # -------------------- done --------------------
@@ -110,8 +114,8 @@ cat <<EOF
     $HOME_DIR
 
   Next, follow docs/become-a-miner.md:
-    1. sf-wallet init        — create your wallet (save the recovery phrase)
-    2. sf-wallet csr         — make your miner request
+    1. sf-wallet init        -create your wallet (save the recovery phrase)
+    2. sf-wallet csr         -make your miner request
     3. buy your \$0.70 testnet certificate, drop the returned cert into place
     4. sf-node init && sf-node start
 
