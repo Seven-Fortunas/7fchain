@@ -63,4 +63,4 @@ If that prints the path, you're ready for the next step.
 
 ## Next
 
-Buy your **$0.70 testnet certificate** and submit `csr.json` → [step 3 of Become a miner](become-a-miner.md) *(detailed purchase guide coming soon)*.
+Buy your **$0.70 testnet certificate** and submit `csr.json` → [step 3 of Become a miner](become-a-miner.md)..
