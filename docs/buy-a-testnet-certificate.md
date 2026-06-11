@@ -37,17 +37,12 @@ Both need to be in place before `sf-node` will start.
 
 ## Put the files in place
 
-Copy the files the registrar returns into your node home:
+The certificate store shows the exact filenames and copy-paste commands after purchase. In general:
 
-```
-# Your signed certificate
-cp <downloaded-cert-file>  ~/7fchain/testnet/l1/miner-0/
+- your certificate goes in `~/7fchain/testnet/l1/miner-0/`
+- the chain files go in `~/7fchain/testnet/l1/intermediate-certs/`
 
-# The chain (one or more intermediate CA cert files)
-cp <downloaded-chain-files>  ~/7fchain/testnet/l1/intermediate-certs/
-```
-
-The exact filenames come from the registrar download. The `intermediate-certs/` directory was created empty by `setup.sh` - this is where the chain goes.
+The `intermediate-certs/` directory was created empty by `setup.sh` - this is where the chain goes.
 
 ## Certificate validity
 
@@ -55,5 +50,4 @@ Each testnet certificate is valid for **up to 214 days** and covers a fixed numb
 
 ## Next
 
-With your certificate and chain in place, you're ready to start the node.
 → **[Run your node](run-your-node.md)**
