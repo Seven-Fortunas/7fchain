@@ -1,43 +1,32 @@
 # 7fchain
 
-Money moves across borders every day — from a construction worker in Houston to his mother in Guadalajara, from a nurse in Atlanta to her family in Lagos. The infrastructure those transfers run on charges them 5–12% for the privilege. 7fchain is built to change that.
+**The Post-Quantum Blockchain for the People.**
 
-**7fchain is a post-quantum Layer 1 blockchain** — certificate-gated, CPU-mined, and anchored to Bitcoin's proof-of-work — designed as the bedrock beneath a Layer 2 that handles what actually matters: cheap remittances, stable money, and payment rails for the AI economy.
+7fchain is a proof-of-work blockchain that is quantum-resistant from its first block. It's built to be mined by ordinary people on ordinary computers — an old laptop or a $20/month server, not ASIC farms or data centers. Layer 1 is a lean post-quantum settlement layer; the Layer 2 superchain on top is where fast, cheap, stable everyday payments live.
 
-## Built in the Satoshi ethos
+**Two ways to take part:**
 
-The 7fchain constitution opens with a simple premise: sound money, publicly verifiable, owned by the people who run it — carried forward into the post-quantum era.
+- **Run a miner.** Help secure the network and earn 7fCOIN. CPU-mineable, certificate-gated, with a cooldown that keeps rewards spread across the community. → [Become a miner](docs/become-a-miner.md)
+- **Build on Layer 2.** Seven Fortunas operates Layer 2 networks for enterprises and governments, and partners can run their own. *(L2 white paper coming as the L2 MVP lands.)*
 
-Every signature is Falcon-512 (NIST FIPS 206). Not retrofitted. Native from genesis.
+## Download
 
-Three principles keep the network honest:
+Get the binaries for your platform from the [latest Release](https://github.com/Seven-Fortunas/7fchain/releases/latest) — `x86_64-linux`, `aarch64-linux`, `arm64-macos`, or `x86_64-macos`. Every release ships a `SHA256SUMS` file: **always [verify your download](docs/verify-your-download.md) before running it.**
 
-- **Block production, not capital, is the franchise.** Mining runs on consumer CPUs (RandomX). An old laptop is a meaningful vote. No ASIC farms. No GPU rigs.
-- **The door never fully closes.** Up to 70,000 miners across 700 geographic regions. A cooldown rotation ensures no single operator dominates block production.
-- **The first purpose is property rights.** What you hold belongs to you — no miner, founder, or certificate authority can move it.
+## Documentation
 
-The genesis coinbase is inscribed: *"PQ blockchain for the people, with the same ethos as Bitcoin. No meme coins. No spam. No scams. Focused on utility. Designed for decentralization and scarcity."*
+- [Mission & Design](papers/7fchain-mission-and-design.md) — why 7fchain exists *(start here)*
+- [Executive Summary](papers/7fchain-executive-summary.md) — the whole project in a few pages
+- [L1 White Paper](papers/7fchain-l1-white-paper.md) — the technical design
+- [Tokenomics](papers/7fcoin-tokenomics.md) — 7fCOIN supply, rewards, and 7fUSD
+- [Constitution](papers/7fchain-constitution.md) — the ethos and the rules we hold ourselves to
 
-## Why post-quantum, why now
+*Each paper is provided as Markdown — readable here on GitHub and by AI agents — and as a PDF for download or print, in [`papers/`](papers/).*
 
-NIST finalized the post-quantum standards (FIPS 203/204/206) in August 2024. Every ECDSA signature securing every major blockchain — Bitcoin, Ethereum, Solana — faces a known deprecation timeline. Retrofitting a live chain requires migrating every wallet, every node, every address format. Building clean does not.
+## Status
 
-7fchain builds the cryptographic substrate the post-quantum internet will require, before that migration becomes everyone else's emergency.
+7fchain is on **testnet**. Mainnet launches once the network is producing blocks from 700 distinct, geographically distributed miners — a participation milestone, not a date. **No meme coins. No spam. No scams. Only utility.**
 
-## The mission lives on Layer 2
+## Free to use
 
-The L1 is bedrock: scarce, secure, quantum-resistant, anchored to a public and immovable record. The L2 is where the mission becomes tangible — remittances for working families, stable money with gas fees at fractions of a cent, AI-to-AI payments, small-business rails across the Americas.
-
-*"A blockchain alone does not solve that problem. The right blockchain, the right Layer 2, and the right on-the-ground partnerships — with the businesses families actually live alongside — can."*
-
-## Get involved
-
-Devnet is live. The testnet opens to academic participants first; mainnet follows when 700 distinct miners across the globe have proven the network can sustain itself.
-
-- **Explorer:** `explore.sevenfortunas.com:7799`
-- **Website:** [seven-fortunas.github.io](https://seven-fortunas.github.io)
-- **Org:** [Seven-Fortunas](https://github.com/Seven-Fortunas)
-
----
-
-*Founders participate on the same mining terms as everyone else — same certificate cost, same cooldown, same per-laptop ceiling. No special pool. No insider channel. The chain succeeds when the community succeeds.*
+The 7fchain binaries are free to download, run, and share — no license fee, no restrictions. The only cost to mine is a low-cost post-quantum miner certificate (see [Become a miner](docs/become-a-miner.md)); the software itself is free. The white papers and documentation here are free to read and redistribute.
