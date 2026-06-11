@@ -20,7 +20,6 @@ flowchart LR
     end
 ```
 
-
 - a **cold machine** - an air-gapped computer that **never connects to the internet** (no Wi-Fi, no ethernet). An old laptop you're no longer using is ideal: wipe it and install Ubuntu fresh [3], then keep it off all networks. It generates and holds your keys.
 - a **hot node** - your normal, online computer that runs `sf-node` and mines.
 
@@ -61,7 +60,7 @@ This produces, as on testnet: `miner-0/` (your encrypted node key), `csr-out/min
 
 **Carry to the hot node** (USB, one direction [2]): copy **`miner-0/`** and **`csr.json`** over. **Leave the recovery phrase and `airgap-out/` on the cold machine** - they never touch a networked computer.
 
-**On the hot node:** buy your certificate and submit `csr.json`, drop the returned certificate and chain into place, then `sf-node init` and `sf-node start` (exactly as in [Run your node](run-your-node.md)).
+**On the hot node:** [buy your certificate](buy-a-testnet-certificate.md) and submit `csr.json`, drop the returned certificate and chain into place, then `sf-node init` and `sf-node start` (exactly as in [Run your node](run-your-node.md)).
 
 ## Spending what you mine
 
