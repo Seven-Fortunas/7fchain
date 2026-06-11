@@ -1,6 +1,6 @@
 # Run Your Node
 
-This is **step 4** of [Become a miner](become-a-miner.md). It assumes you've run `./setup.sh`, created your wallet and request ([step 2](create-wallet-and-request.md)), and received your signed certificate after buying your **$0.70 testnet certificate** ([step 3](become-a-miner.md)).
+This is **step 4** of [Become a miner](become-a-miner.md). It assumes you've run `./setup.sh`, created your wallet and request ([step 2](create-wallet-and-request.md)), and received your signed certificate ([step 3](buy-a-testnet-certificate.md)).
 
 The certificate your registrar returns slots into a chain of trust that runs up to a root key built into `sf-node`. The node verifies this chain at startup before it will mine.
 
@@ -14,12 +14,12 @@ graph TD
 
 ## 1. Put your certificate and its chain in place
 
-When you buy your certificate, the registrar returns **two things**: your signed certificate **and the certificate chain that validates it** (the chain depends on which registrar signed you, so it comes from the registrar - not the download bundle). Put them where the node looks:
+The certificate store returns **two things**: your signed certificate and the certificate chain that validates it. Put them where the node looks:
 
 - your certificate → `~/7fchain/testnet/l1/miner-0/`
 - the chain certificates → `~/7fchain/testnet/l1/intermediate-certs/`
 
-*(The exact filenames and a copy-paste command will be in the purchase guide once that flow is live.)* The genesis and dev-fund files are already in place from `setup.sh`.
+The exact filenames are shown in the certificate store after purchase. The genesis and dev-fund files are already in place from `setup.sh`.
 
 ## 2. Create your node config
 
