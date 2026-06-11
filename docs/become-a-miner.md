@@ -27,7 +27,7 @@ Run `sf-wallet` to create your wallet (save your recovery phrase somewhere safe)
 ## 3. Buy your testnet certificate ($0.70)
 
 A certificate is what lets your node join and mine; a testnet one costs **$0.70**. We're not charging to make money - the fee exists so we can beta-test our payment system and automated registrar end to end. You submit your request, pay, and get back your certificate **plus the chain that validates it**, automatically.
-→ **Step-by-step:** *Buy a testnet certificate (coming soon)*
+→ **Step-by-step:** [Buy a testnet certificate](buy-a-testnet-certificate.md)
 
 ## 4. Run your node
 
