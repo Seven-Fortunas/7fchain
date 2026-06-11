@@ -9,7 +9,7 @@ Step-by-step guides for testnet miners. If you're just getting started, follow t
 | Overview | [Become a miner](become-a-miner.md) | Read this first - the full five-step flow |
 | 1. Download | [Verify your download](verify-your-download.md) | After downloading the release bundle |
 | 2. Wallet | [Create your wallet & request](create-wallet-and-request.md) | After running `./setup.sh` |
-| 3. Certificate | *Buy a testnet certificate (coming soon)* | After generating your miner request |
+| 3. Certificate | [Buy a testnet certificate](buy-a-testnet-certificate.md) | After generating your miner request |
 | 4. Node | [Run your node](run-your-node.md) | After receiving your certificate from the registrar |
 | 5. Explorer | [Run your own explorer](run-an-explorer.md) | Optional - watch the chain in a browser |
 
