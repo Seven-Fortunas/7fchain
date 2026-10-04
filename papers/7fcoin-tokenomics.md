@@ -12,7 +12,7 @@ Bitcoin proved that decentralized money works. Ethereum proved that programmable
 
 7fchain exists because we needed a blockchain where every signature is quantum-resistant from the first block, where Layer 2 utility is built into the architecture from day one, where mining stays accessible to individuals running nodes on consumer hardware, and where the chain is protected from spam, scams, and meme coins by design. We are big believers in both Bitcoin and Ethereum and are competing with neither. We had different problems to solve.
 
-7fchain uses a two-token model. **7fCOIN** is the scarce Layer 1 asset, mined through proof of work and secured by Falcon-512 signatures. **7fUSD** is a fully-backed utility token that serves as the common unit of value and the intermediate currency for swaps across the Layer 2 superchain. Each Layer 2 chain runs its own tokens and sets its own gas; 7fUSD is the default, keeping fees cheap and stably priced where it is used.
+7fchain uses a two-token model. **7fCOIN** is the scarce Layer 1 asset, mined through proof of work and secured by ML-DSA-65 signatures. **7fUSD** is a protocol-maintained utility token — held to a low, stable band rather than pegged to $1 — that serves as the default gas token and the intermediate currency for swaps across the 7F L2 Lattice. Each Layer 2 chain runs its own tokens and sets its own gas; 7fUSD is the default, keeping fees cheap and stably priced where it is used.
 
 ## Proof of Work for Node Runners
 
@@ -24,7 +24,7 @@ The mining set is further bounded by CA-issued policy levers documented in the L
 - **Bounded active mining set.** The CA targets a large but finite population of simultaneously-active miner certificates — on the order of the 70,000-miner goal that gives the chain its name. The mechanism for keeping the network open to newcomers once the set is full is being finalized.
 - **Partner-led distribution.** Miner certificates are distributed through a network of regional partners (up to ~700) rather than sold directly. Allocations are sized so that, as the partner roster grows, the network approaches its active-mining target gradually and across many regions. Allocation is increasingly measured in *block allowance* rather than raw certificate count.
 
-Seven Fortunas operates Layer 2 chains for its customers and enables others to run their own Layer 2 chains on the 7fchain superchain. Layer 2 operators are also node runners, contributing hash power to Layer 1 security while operating their own chains. Partners frequently overlap with L2 operators, L2 validators, and L2 cashiers — the same regional entity that distributes miner certs in its territory typically anchors the L2 economy there too. Transparent dashboards publish blocks-per-region and blocks-per-partner so the egalitarian distribution goal is auditable against actual realized supply.
+Seven Fortunas operates Layer 2 chains for its customers and enables others to run their own Layer 2 chains on the 7F L2 Lattice. Layer 2 operators are also node runners, contributing hash power to Layer 1 security while operating their own chains. Partners frequently overlap with L2 operators, L2 validators, and L2 cashiers — the same regional entity that distributes miner certs in its territory typically anchors the L2 economy there too. Transparent dashboards publish blocks-per-region and blocks-per-partner so the egalitarian distribution goal is auditable against actual realized supply.
 
 ---
 
@@ -68,31 +68,23 @@ Each ≈34-day unlock of 700 coins is minimal relative to the ≈48,510 coins pa
 
 ## 7fUSD Economics
 
-7fUSD is the superchain's fully-backed utility token. It is minted by Seven Fortunas against off-chain reserves and serves as the common unit of value across Layer 2 — used to move value, swap between chains, and post as the canonical collateral for bond-locks across the superchain. Each Layer 2 chain runs its own tokens and sets its own gas; 7fUSD is the default, keeping fees cheap and stably priced where it is used.
+7fUSD is the 7F L2 Lattice's utility token, not a dollar-pegged stablecoin. It is minted and burned at the protocol level and serves as the common gas and value-transfer unit across Layer 2 — used to pay transaction fees, move value, and swap between chains. Each Layer 2 chain runs its own tokens and sets its own gas; 7fUSD is the default, keeping fees cheap and stably priced where it is used. (This is a different product from Seven Fortunas' gd-stablecoin, which is a fully-collateralized, dollar-pegged EVM stablecoin built for payments use cases.)
 
-### Issuance and Backing
+### Issuance
 
-7fUSD is a fully-backed stablecoin targeting $1 per token. Issuance is controlled at the protocol level by CentCom (Tier 3 in the seven-tier key hierarchy — see L1 white paper). New 7fUSD is minted only when corresponding backing assets are deposited into segregated reserves; on redemption, the corresponding 7fUSD is burned and the equivalent USD is released. The 1:1 backing invariant is maintained on every mint and burn.
-
-Backing composition is conservative and transparent:
-
-- **Short-duration US Treasury bills** — primary reserve. Default-free and yield-bearing.
-- **Cash and cash equivalents** — buffer for redemption velocity.
-- **Other high-grade short-duration instruments** — may be added over time as scale warrants, with disclosure.
-
-Reserves are held in segregated custody at regulated financial institutions. Proof of reserves is published periodically and independently audited.
+Issuance is controlled at the protocol level by CentCom (Tier 3 in the seven-tier key hierarchy — see L1 white paper). 7fUSD is minted when a Layer 2 facilitator funds a user's balance, and burned when the corresponding gas is consumed or a user bridges out — tying supply directly to actual network usage rather than to a reserve.
 
 ### Stability Mechanism
 
-7fUSD's $1 target is maintained by direct 1:1 backing — not by algorithmic mechanisms. Algorithmic stablecoins have repeatedly failed under stress (Terra/UST being the most prominent example). Fully-collateralized backing is more capital-intensive but is the model that has survived every market cycle. Seven Fortunas chooses the more conservative model deliberately.
+7fUSD is deliberately held to a low, protocol-maintained band rather than tracking $1 — its job is to keep Layer 2 gas cheap and predictable, not to serve as a store of value or a financial instrument. This is a different design choice from a collateral-backed $1 stablecoin, made because 7fUSD's role is paying fees on 7fchain's own network rather than representing dollars off-chain.
 
 ### Demand Drivers
 
-Beyond the baseline demand of being a common unit of value across Layer 2, 7fUSD has structural demand sources that compound with network adoption:
+Beyond the baseline demand of being the common gas token across Layer 2, 7fUSD has structural demand sources that compound with network adoption:
 
-- **Gas across the Layer 2 superchain.** Layer 2 transactions settle fees in 7fUSD wherever it is the configured gas token. As L2 transaction volume grows, 7fUSD circulation grows with it.
+- **Gas across the 7F L2 Lattice.** Layer 2 transactions settle fees in 7fUSD wherever it is the configured gas token. As L2 transaction volume grows, 7fUSD circulation grows with it.
 - **Cross-token swap intermediate.** Every cross-token, cross-chain, or external swap routes through 7fUSD on the L2-Swap chain. The intermediate 7fUSD is structural transit volume.
-- **Bond collateral on the L2-Swap chain.** Every cashier, sequencer, verifier, validator, and other service provider holds bond-locked UTXOs (see L2 white paper §5–§6). 7fUSD is the natural default denomination because it carries no token-specific volatility risk. This is **persistent, locked, non-circulating demand** — capital committed to remain on-chain for the bond lifecycle (60-day minimum script-enforced lock; typically much longer in practice).
+- **Bond collateral on the L2-Swap chain.** Every cashier, sequencer, verifier, validator, and other service provider holds bond-locked UTXOs (see L2 white paper §5–§6). 7fUSD is the natural default denomination because its value is held to a protocol-maintained band rather than floating with the market. This is **persistent, locked, non-circulating demand** — capital committed to remain on-chain for the bond lifecycle (60-day minimum script-enforced lock; typically much longer in practice).
 - **Bridge facilitator working capital.** Every external bridge (USDC-on-Base, USDT-on-Tron, etc.) requires the facilitator to hold 7fUSD inventory on the L2-Swap side.
 
 ---
@@ -101,12 +93,12 @@ Beyond the baseline demand of being a common unit of value across Layer 2, 7fUSD
 
 Layer 1 carries only 7fCOIN. Layer 2 chains support additional assets:
 
-- **7fUSD** — the superchain's fully-backed unit of value (see §above).
+- **7fUSD** — the 7F L2 Lattice's utility gas token (see §above).
 - **w7fCOIN** — wrapped 7fCOIN; 1:1 backed by 7fCOIN locked on Layer 1; tradeable on Layer 2.
 - **7fBTC** — wrapped Bitcoin; 1:1 backed by BTC held in Seven Fortunas cold storage with auditable addresses and periodic independent audit.
 - **Partner-issued tokens** — gift cards, local-currency denominations, country-specific utility tokens, wrapped real-world assets — issued by partner-operated L2 chains under the same governance-controlled token-definition mechanism every 7fchain token uses.
 
-Seven Fortunas maintains a diversified corporate treasury: 7fCOIN as a long-term reserve, US Treasury bills backing 7fUSD issuance, and Bitcoin backing 7fBTC.
+Seven Fortunas maintains a diversified corporate treasury: 7fCOIN as a long-term reserve, and Bitcoin backing 7fBTC.
 
 ---
 
