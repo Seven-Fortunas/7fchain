@@ -7,7 +7,7 @@ https://github.com/Seven-Fortunas/7fchain/releases/latest
 
 ## Verify on Linux (Ubuntu / WSL)
 
-1. Put the downloaded archive (e.g. `7fchain-testnet-2026-06-08-x86_64-linux.tar.gz`) and `SHA256SUMS` in the same folder.
+1. Put the downloaded archive (e.g. `7fchain-testnet-2026-10-09-x86_64-linux.tar.gz`) and `SHA256SUMS` in the same folder.
 2. In that folder, run:
 
    ```
@@ -17,7 +17,7 @@ https://github.com/Seven-Fortunas/7fchain/releases/latest
 3. You should see your archive's name followed by **`OK`**:
 
    ```
-   7fchain-testnet-2026-06-08-x86_64-linux.tar.gz: OK
+   7fchain-testnet-2026-10-09-x86_64-linux.tar.gz: OK
    ```
 
    (Lines for other platforms' archives may say `FAILED open or read` simply because you didn't download those files — that's fine. The line for *your* archive must say `OK`.)
