@@ -26,7 +26,7 @@ Run the next commands from here, so your wallet file is stored alongside the res
 ## 2. Create your wallet
 
 ```
-sf-wallet init --network testnet
+sf-wallet init
 ```
 
 - It walks you through building a **24-word recovery phrase**, asking you to choose between word sets and to place a few words yourself. Your choices are part of the phrase, so it is not something the software decided on its own.

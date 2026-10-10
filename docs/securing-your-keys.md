@@ -38,7 +38,7 @@ Your recovery phrase restores every key you have. Protect it as you would a crit
 
 ```
 cd ~/7fchain/mainnet/l1
-sf-wallet init --network mainnet     # back up the recovery phrase (see above)
+sf-wallet init                       # back up the recovery phrase (see above)
 sf-wallet csr                        # set passwords, generate (same menu as testnet)
 ```
 
