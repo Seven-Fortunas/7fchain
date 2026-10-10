@@ -1,5 +1,11 @@
 # Buy a Testnet Certificate ($0.70)
 
+> **⏸ Purchases are paused for the 9 October 2026 relaunch.** The testnet was
+> re-founded on a new nine-Root federation, and certificates for the new network
+> are not on sale yet. **Please don't buy a certificate until this notice is
+> removed** — this page will be updated when purchases reopen. You can still
+> download, verify, run `./setup.sh` and create your wallet and miner request now.
+
 This is **step 3** of [Become a miner](become-a-miner.md). It assumes you've already created your wallet and miner request ([step 2](create-wallet-and-request.md)), so you have a `csr.json` file ready.
 
 A certificate is what grants your node an identity on the network. The registrar verifies your request and issues a certificate signed by a trusted intermediate CA - your node checks this chain against the root key built into `sf-node` before it will mine.
