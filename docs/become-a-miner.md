@@ -48,4 +48,10 @@ Each certificate mines a limited number of blocks. When yours is used up, get an
 - **Per-cert block cap.** Each certificate mines a limited number of blocks over its life; when it's used up, get another and [rotate onto it](rotate-your-certificate.md). You can stage the replacement in advance so there's no downtime.
 - **Cooldown.** After you mine a block, your certificate waits a while before it can mine again — spreading rewards across the community so small miners get a fair share.
 
+## Feedback
+
+Stuck, confused, or have an idea? Tell us in our [short feedback form](https://forms.gle/acBoEKEMBeh6piE67) — it takes a minute, and you can stay anonymous. Please don't include your API key, recovery phrase, passwords, or key files.
+
+Found a security issue? Please don't post it anywhere public. [Report it privately on GitHub](https://github.com/Seven-Fortunas/7fchain/security/advisories/new) (needs a GitHub account), or use the feedback form above.
+
 For the full design, see the [L1 White Paper](../papers/7fchain-l1-white-paper.md).
