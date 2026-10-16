@@ -66,7 +66,7 @@ sf-node certs
 
 ```
   index serial              blocks left  valid until            status
-  0     0100000000008e          7 of 10  2027-05-15 02:22Z      usable
+  0     01000000000079         41 of 50  2027-05-18 23:09Z      usable
 ```
 
 While the node is running it shows `?` instead of the counts, because the running node has the chain data open. Start the node again afterwards.
