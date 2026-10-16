@@ -71,7 +71,7 @@ If you already have 7fchain installed, you don't need to remove anything first â
    ```
 
    ```
-   sf-node 0.2.1 (1cd19c5)
+   sf-node 0.2.1 (04f254e)
    ```
 
 4. **Upgrading from `testnet-2026-10-11` or earlier: replace your certificates.** The testnet restarted from block 1 with `testnet-2026-10-16`, so certificates from before then no longer work. A certificate file now holds your certificate alone, not the whole chain, and a node that finds an old one refuses to start. From your node home, move the old ones aside:
