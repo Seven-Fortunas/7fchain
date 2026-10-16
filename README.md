@@ -17,7 +17,7 @@ Get the binaries for your platform from the [latest Release](https://github.com/
 
 With release `testnet-2026-10-16.1` the testnet started again from block 1, and
 certificates from earlier releases no longer work. If you mined before, three
-things to do, all in [installing over an existing installation](docs/verify-your-download.md#installing-over-an-existing-installation):
+things to do, step by step in **[Update your miner](docs/update-your-miner.md)**:
 
 1. Run `./setup.sh --clean` from the new release. Plain `./setup.sh` would keep
    the old chain database, and the node would not join the new chain.

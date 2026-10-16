@@ -9,7 +9,7 @@ When you ran `sf-node obtain`, it installed everything for you. **There is nothi
 - Your **miner certificate** is in `~/7fchain/testnet/l1/miner-0/`, beside your key, one file per certificate. Each file holds your certificate alone.
 - The **registrar's certificate**, which signed yours, went into `certs/`. The network's own certificates are already there from `setup.sh`, along with the genesis and dev-fund files.
 
-The node puts the two together when it starts. A file in `miner-0/` that holds a whole chain (several certificates) comes from an older release: the node refuses to start with it. See [installing over an existing installation](verify-your-download.md#installing-over-an-existing-installation).
+The node puts the two together when it starts. A file in `miner-0/` that holds a whole chain (several certificates) comes from an older release: the node refuses to start with it. See [Update your miner](update-your-miner.md).
 
 ## 2. Create your node config
 

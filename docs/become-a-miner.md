@@ -2,6 +2,8 @@
 
 7fchain is live on **testnet** — this is how you join it. Testnet is where we harden the network together before mainnet: you run a real miner, earn testnet 7fCOIN (no monetary value yet), and help us prove out the software and the automated certificate registrar. It runs on an ordinary computer — no GPU, no special hardware.
 
+**Already mining?** To install a new release over your existing node, follow [Update your miner](update-your-miner.md).
+
 **You'll need Linux or macOS.** We publish builds for x86_64 and ARM Linux and for Apple Silicon and Intel Macs. On Windows, use Ubuntu via **Windows Subsystem for Linux (WSL)** ([install guide](install-wsl.md)).
 
 > **Testnet vs. mainnet.** On testnet it's fine to run everything on your normal machine — nothing of value is at stake, so it's the place to practice. **For mainnet you'll want your keys on an air-gapped machine** — see [Securing your keys for mainnet](securing-your-keys.md).

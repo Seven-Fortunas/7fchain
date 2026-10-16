@@ -19,6 +19,7 @@ Step-by-step guides for testnet miners. If you're just getting started, follow t
 
 | Guide | When to read it |
 |-------|----------------|
+| [Update your miner](update-your-miner.md) | Already mining - install a new release over your node (and what to do after a testnet restart) |
 | [Install WSL (Windows)](install-wsl.md) | Windows users only - install Ubuntu before step 1 |
 | [Securing your keys for mainnet](securing-your-keys.md) | Before mainnet launch - not needed for testnet practice |
 
