@@ -37,7 +37,7 @@ You can watch the network at **[explore.sevenfortunas.com](https://explore.seven
 - [Tokenomics](papers/7fcoin-tokenomics.md) — 7fCOIN supply, rewards, and 7fUSD
 - [Constitution](papers/7fchain-constitution.md) — the ethos and the rules we hold ourselves to
 
-*Each paper is provided as Markdown — readable here on GitHub and by AI agents — and as a PDF for download or print, in [`papers/`](papers/).*
+*Each paper is provided as Markdown, readable here on GitHub and by AI agents, in [`papers/`](papers/).*
 
 ## Status
 

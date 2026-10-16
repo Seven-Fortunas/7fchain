@@ -12,7 +12,7 @@ Five documents covering why 7fchain exists, how it works, and the principles it 
 | 4 | [7fCOIN Tokenomics](7fcoin-tokenomics.md) | Supply cap, block rewards, cooldown, tail emission, and 7fUSD | Medium |
 | 5 | [Constitution](7fchain-constitution.md) | The ethos, the commitments we make to miners, and the rules we hold ourselves to | Short |
 
-Each paper is available as Markdown (readable here on GitHub and by AI agents) and as a PDF - both formats are in this directory.
+Each paper is Markdown, readable here on GitHub and by AI agents.
 
 ## If your time is short
 
