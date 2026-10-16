@@ -71,11 +71,7 @@ For a release that did not restart the testnet, plain `./setup.sh` is enough: it
 sf-node --version
 ```
 
-For `testnet-2026-10-16.1` it prints:
-
-```
-sf-node 0.2.1 (04f254e)
-```
+For `testnet-2026-10-16.1` the output is `sf-node 0.2.1 (04f254e)`. That line is output to compare against, not a command to run.
 
 ## 6. Move your old certificates aside (testnet restart only)
 
@@ -107,13 +103,19 @@ Enter your **node-startup password** when asked. You should see `installed miner
 sf-node start ~/7fchain/testnet/l1/node-config.json
 ```
 
-Enter your node-startup password. After a restart release the node downloads the chain from block 1, printing a line for each block:
+Enter your node-startup password. After a restart release the node downloads the chain from block 1, printing a line for each block, such as `[dispatch] accepted block 1 from 203.0.113.10:8333`. When it reaches the network's tip it prints `[trusted-tip] OK: local chain == consensus tip` and starts mining. Compare its height with the network's at [explore.sevenfortunas.com](https://explore.sevenfortunas.com/).
+
+## 9. Check your certificate
+
+In a second terminal, while the node runs:
 
 ```
-[dispatch] accepted block 1 from 203.0.113.10:8333
+sf-node certs ~/7fchain/testnet/l1/node-config.json
 ```
 
-When it reaches the network's tip it prints `[trusted-tip] OK: local chain == consensus tip` and starts mining. Compare its height with the network's at [explore.sevenfortunas.com](https://explore.sevenfortunas.com/).
+Your new certificate is listed at index `0` with its serial, its block cap (`? of 50`) and its expiry. The `?` is normal while the node is running: it can't read its block store then, so it can't count blocks left. To see the count, stop the node, run the command again, and start the node again.
+
+Your first blocks show on the [Miners page](https://explore.sevenfortunas.com/miners) under your payout address, with `Cert remaining` counting down from 50. With several miners and a cooldown, your first block can take a while.
 
 More on running, stopping and restarting: [Run your node](run-your-node.md).
 

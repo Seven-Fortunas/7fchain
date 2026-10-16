@@ -56,7 +56,7 @@ When you're done, close the terminal, or run `unset SF_OBTAIN_KEY`.
 
 ## When your certificates run out
 
-**Each testnet certificate currently lets your node mine 10 blocks** (and is valid for several months; `sf-node certs` shows both). When a certificate has mined its 10, your node moves to the next one it holds. When it has none left, it stops mining — it keeps running and syncing, but earns nothing until you get more.
+**Each testnet certificate currently lets your node mine 50 blocks** (and is valid for several months; `sf-node certs` shows both). When a certificate has mined its 50, your node moves to the next one it holds. When it has none left, it stops mining — it keeps running and syncing, but earns nothing until you get more.
 
 **See how many blocks you have left.** Stop your node, then run, from your node home:
 
@@ -77,7 +77,7 @@ While the node is running it shows `?` instead of the counts, because the runnin
 sf-node obtain --count 1
 ```
 
-`--count` is how many certificates to get, at 10 blocks each: `--count 5` gets five. Each one uses one certificate from your API key's allowance, so ask only for what you'll use. You can run this while your node is running: new certificates land in `miner-0/` beside the others, and the node picks them up when it needs the next one — no restart.
+`--count` is how many certificates to get, at 50 blocks each: `--count 5` gets five. Each one uses one certificate from your API key's allowance, so ask only for what you'll use. You can run this while your node is running: new certificates land in `miner-0/` beside the others, and the node picks them up when it needs the next one — no restart.
 
 ## Trouble?
 
