@@ -2,7 +2,7 @@
 
 For miners who already run a 7fchain node and want the new release. New miners: follow [Become a miner](become-a-miner.md) instead.
 
-> **The current release is `testnet-2026-10-16.1`, and the testnet restarted from block 1 with it.** If you mined with `testnet-2026-10-11` or earlier, your old chain and certificates no longer work. Follow every step below, including steps 6 and 7. Your wallet and keys are kept.
+> **The current release is `testnet-2026-10-16.2`, and the testnet restarted from block 1 with it.** If you mined with `testnet-2026-10-11` or earlier, your old chain and certificates no longer work. Follow every step below, including steps 6 and 7. Your wallet and keys are kept.
 
 All commands run on your node machine. Your node home is `~/7fchain/testnet/l1`.
 
@@ -20,7 +20,7 @@ Pick your platform (`uname -sm` tells you which):
 Then download the archive and the checksum file into a new folder (set `PLATFORM` to yours):
 
 ```
-REL=testnet-2026-10-16.1
+REL=testnet-2026-10-16.2
 PLATFORM=x86_64-linux
 mkdir -p ~/7fchain-releases/$REL && cd ~/7fchain-releases/$REL
 curl -fLO https://github.com/Seven-Fortunas/7fchain/releases/download/$REL/7fchain-$REL-$PLATFORM.tar.gz
@@ -61,7 +61,7 @@ cd 7fchain-$REL-$PLATFORM
 ./setup.sh --clean
 ```
 
-`--clean` is needed whenever the release notes say the testnet **restarted**, as it did for `testnet-2026-10-16.1`. It replaces the programs and the network files and clears the chain database and peer list; your node downloads the new chain again. It **keeps** your wallet, keys, `miner-0/`, `node-config.json` and the registrar certificate in `certs/`.
+`--clean` is needed whenever the release notes say the testnet **restarted**, as it did for `testnet-2026-10-16.2`. It replaces the programs and the network files and clears the chain database and peer list; your node downloads the new chain again. It **keeps** your wallet, keys, `miner-0/`, `node-config.json` and the registrar certificate in `certs/`.
 
 For a release that did not restart the testnet, plain `./setup.sh` is enough: it replaces the programs and keeps everything else, chain included.
 
@@ -71,7 +71,7 @@ For a release that did not restart the testnet, plain `./setup.sh` is enough: it
 sf-node --version
 ```
 
-For `testnet-2026-10-16.1` the output is `sf-node 0.2.1 (04f254e)`. That line is output to compare against, not a command to run.
+For `testnet-2026-10-16.2` the output is `sf-node 0.2.1 (ad9a103)`. That line is output to compare against, not a command to run.
 
 ## 6. Move your old certificates aside (testnet restart only)
 
