@@ -15,7 +15,7 @@ Get the binaries for your platform from the [latest Release](https://github.com/
 
 ## Already mining? The testnet restarted from block 1
 
-With release `testnet-2026-10-16` the testnet started again from block 1, and
+With release `testnet-2026-10-16.1` the testnet started again from block 1, and
 certificates from earlier releases no longer work. If you mined before, three
 things to do, all in [installing over an existing installation](docs/verify-your-download.md#installing-over-an-existing-installation):
 

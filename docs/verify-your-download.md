@@ -63,8 +63,8 @@ If you already have 7fchain installed, you don't need to remove anything first �
 1. **Stop your node** if it's running: `sf-node stop ~/7fchain/testnet/l1/node-config.json`
 2. **Unpack the new release and run its setup script**, as above:
    - `./setup.sh` — replaces the programs and refreshes the network's certificates. Everything else in `~/7fchain/testnet/l1/` stays as it is: wallet, keys, miner certificate, configs and chain data.
-   - `./setup.sh --clean` — use this when the release notes say the testnet was **restarted** or **relaunched**, as it was for `testnet-2026-10-16`. It also clears the chain data and peer list (your node downloads them again) and replaces the network files and leftovers from older releases. Your **wallet, keys and certificates are kept**.
-3. **Check the new version** — for `testnet-2026-10-16` it prints the line below:
+   - `./setup.sh --clean` — use this when the release notes say the testnet was **restarted** or **relaunched**, as it was for `testnet-2026-10-16.1`. It also clears the chain data and peer list (your node downloads them again) and replaces the network files and leftovers from older releases. Your **wallet, keys and certificates are kept**.
+3. **Check the new version** — for `testnet-2026-10-16.1` it prints the line below:
 
    ```
    sf-node --version
@@ -74,7 +74,7 @@ If you already have 7fchain installed, you don't need to remove anything first �
    sf-node 0.2.1 (04f254e)
    ```
 
-4. **Upgrading from `testnet-2026-10-11` or earlier: replace your certificates.** The testnet restarted from block 1 with `testnet-2026-10-16`, so certificates from before then no longer work. A certificate file now holds your certificate alone, not the whole chain, and a node that finds an old one refuses to start. From your node home, move the old ones aside:
+4. **Upgrading from `testnet-2026-10-11` or earlier: replace your certificates.** The testnet restarted from block 1 with `testnet-2026-10-16.1`, so certificates from before then no longer work. A certificate file now holds your certificate alone, not the whole chain, and a node that finds an old one refuses to start. From your node home, move the old ones aside:
 
    ```
    cd ~/7fchain/testnet/l1
