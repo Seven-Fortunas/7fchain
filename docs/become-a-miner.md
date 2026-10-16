@@ -18,7 +18,7 @@ Run `sf-wallet` to create your wallet (save your recovery phrase somewhere safe)
 
 ## 3. Get your testnet certificate (free)
 
-A certificate is what lets your node join and mine. **On testnet it's free.** One command, `sf-node obtain`, asks the registrar for your certificate and installs it **with the chain that validates it** — nothing to upload or copy. While the testnet is young, certificates are **by invitation**: you'll need the API key you were sent.
+A certificate is what lets your node join and mine. **On testnet it's free.** One command, `sf-node obtain`, asks the registrar for your certificate and installs it, along with the registrar's own certificate — nothing to upload or copy. While the testnet is young, certificates are **by invitation**: you'll need the API key you were sent.
 → **Step-by-step:** [Get a testnet certificate](get-a-testnet-certificate.md)
 
 ## 4. Run your node
@@ -33,7 +33,7 @@ An ordinary home connection gives your node no way to accept incoming connection
 
 ## 6. Watch the chain (optional)
 
-Run a local block explorer to see blocks, transactions, and your node's progress in your browser.
+Run a local block explorer to see blocks, transactions, and your node's progress in your browser. The network's public explorer is at [explore.sevenfortunas.com](https://explore.sevenfortunas.com/).
 → **Step-by-step:** [Run your own explorer](run-an-explorer.md)
 
 ## 7. Rotate when your certificate runs out

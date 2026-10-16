@@ -13,25 +13,21 @@
 
 Get the binaries for your platform from the [latest Release](https://github.com/Seven-Fortunas/7fchain/releases/latest) — `x86_64-linux`, `aarch64-linux`, `arm64-macos`, or `x86_64-macos`. Every release ships a `SHA256SUMS` file: **always [verify your download](docs/verify-your-download.md) before running it.**
 
-## Already mining? Re-run setup with `--clean`
+## Already mining? The testnet restarted from block 1
 
-The testnet was re-founded on **9 October 2026** on a new nine-Root federation,
-and a node holding the previous network files will not start. If you mined before
-that date:
+With release `testnet-2026-10-16` the testnet started again from block 1, and
+certificates from earlier releases no longer work. If you mined before, three
+things to do, all in [installing over an existing installation](docs/verify-your-download.md#installing-over-an-existing-installation):
 
-```bash
-./setup.sh --clean
-```
+1. Run `./setup.sh --clean` from the new release. Plain `./setup.sh` would keep
+   the old chain database, and the node would not join the new chain.
+2. Move your old certificates out of `miner-0/`.
+3. Get new ones with `sf-node obtain`. Your API key's allowance has been reset.
 
-`--clean` removes only regenerable state — the chain database, peer book and old
-network files — and installs the current ones. **Your wallet, keys and certificates are kept**, and
-there is nothing to copy back afterwards. Step by step: [installing over an existing installation](docs/verify-your-download.md#installing-over-an-existing-installation).
+Your wallet and keys are kept. New miners can ignore this and follow
+[Become a miner](docs/become-a-miner.md).
 
-Plain `./setup.sh` is not enough on an existing install: it skips any file already
-present, so you would keep the old network files and the old chain database, and the
-node would refuse to start.
-
-New miners can ignore this and follow [Become a miner](docs/become-a-miner.md).
+You can watch the network at **[explore.sevenfortunas.com](https://explore.sevenfortunas.com/)**.
 
 ## Documentation
 

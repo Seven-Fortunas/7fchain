@@ -2,7 +2,7 @@
 
 `sf-explorer` is a local, read-only block explorer — a web view of the chain (blocks, transactions, addresses) that runs on your own machine. It ships in the same release bundle as `sf-node` and `sf-wallet`, so there's nothing extra to download.
 
-You don't need it to mine. It's a nice way to watch your node and the network.
+You don't need it to mine. It's a nice way to watch your node and the network. To see the network without running anything, use the public explorer at **[explore.sevenfortunas.com](https://explore.sevenfortunas.com/)**.
 
 ## Run it
 

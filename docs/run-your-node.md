@@ -4,9 +4,12 @@ This is **step 4** of [Become a miner](become-a-miner.md). It assumes you've run
 
 ## 1. Your certificate is already in place
 
-When you ran `sf-node obtain`, the registrar returned your signed certificate **and the chain that validates it**, as one file. **There is nothing for you to copy.** `sf-node obtain` installs it into `~/7fchain/testnet/l1/miner-0/` beside your key, and the network's own certificates are already in `certs/` from `setup.sh`, along with the genesis and dev-fund files.
+When you ran `sf-node obtain`, it installed everything for you. **There is nothing for you to copy.**
 
-If you ever need to place one by hand, a returned chain goes in `miner-0/` whole — not split across folders. The node reads the chain from there and the spine from `certs/`.
+- Your **miner certificate** is in `~/7fchain/testnet/l1/miner-0/`, beside your key, one file per certificate. Each file holds your certificate alone.
+- The **registrar's certificate**, which signed yours, went into `certs/`. The network's own certificates are already there from `setup.sh`, along with the genesis and dev-fund files.
+
+The node puts the two together when it starts. A file in `miner-0/` that holds a whole chain (several certificates) comes from an older release: the node refuses to start with it. See [installing over an existing installation](verify-your-download.md#installing-over-an-existing-installation).
 
 ## 2. Create your node config
 
@@ -47,7 +50,8 @@ When it reaches the network's current tip it prints:
 [trusted-tip] OK: local chain == consensus tip
 ```
 
-and begins mining.
+and begins mining. The network's current height is shown at
+[explore.sevenfortunas.com](https://explore.sevenfortunas.com/).
 
 **Stop it.**
 

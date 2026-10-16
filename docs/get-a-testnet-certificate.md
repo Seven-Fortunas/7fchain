@@ -43,12 +43,14 @@ Enter your **node-startup password** when asked. The node builds its certificate
 
 ```
 network: testnet  (home /home/you/7fchain/testnet/l1)
+GET https://obtain.sevenfortunas.com/obtain-chain/miner-cert
 POST https://obtain.sevenfortunas.com/cert/sign/miner-cert  (1 request(s))
 installed miner-0/ ...
+filed /home/you/7fchain/testnet/l1/certs/registrar-...pem
 wrote session chain /home/you/7fchain/testnet/l1/session-chain.pem
 ```
 
-That's two things installed: your **miner certificate** with the chain that validates it, in `miner-0/`, and a **session certificate** your node shows to its peers. Your request carries your payout address, so the certificate pays your rewards to you.
+That installs your **miner certificate** in `miner-0/`, the **registrar's certificate** that signed it in `certs/` (the `filed` line, the first time only), and a **session certificate** your node shows to its peers. Your request carries your payout address, so the certificate pays your rewards to you.
 
 When you're done, close the terminal, or run `unset SF_OBTAIN_KEY`.
 
@@ -84,6 +86,7 @@ sf-node obtain --count 1
 - **"quota"** — your key has used its certificate allowance. Ask the person who invited you.
 - **"no miner identity … Import one first"** — step 2 isn't finished: run `sf-node import airgap-out/miner-0/transport.json` from your node home.
 - **"Failed to decrypt"** — wrong node-startup password. It's the one you set during `sf-node import`.
+- **"refusing to install: … a different certificate for the same key"** — the registrar returned a certificate that conflicts with one your node already holds. Nothing was installed. Report it, with the full message, through the feedback form in [Become a miner](become-a-miner.md).
 
 ## Next
 
