@@ -96,7 +96,7 @@ sf-node obtain --count 1
 
 ## Trouble?
 
-- **"pass --key <api-key> or set SF_OBTAIN_KEY"** — the key isn't loaded in this terminal. Repeat step 2 in the same terminal you run step 3 from.
+- **`pass --key <api-key> or set SF_OBTAIN_KEY`** — the key isn't loaded in this terminal. Repeat step 2 in the same terminal you run step 3 from.
 - **"HTTP 401 … unknown API key"** — the key was mistyped. Repeat step 2 and paste it again.
 - **"quota"** — your key has used its certificate allowance. Ask the person who invited you.
 - **"no miner identity … Import one first"** — step 2 isn't finished: run `sf-node import airgap-out/miner-0/transport.json` from your node home.

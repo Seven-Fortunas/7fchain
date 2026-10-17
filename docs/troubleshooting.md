@@ -108,7 +108,6 @@ Import your identity (`sf-node import airgap-out/miner-0/transport.json`) and ge
 
 ### `[boot] miner-{n} ({dir}) is not usable: {problem}`
 
-
 | `{problem}` | Fix |
 |---|---|
 | `no ml-dsa-hot.key.enc` | Import that identity with `sf-node import` |
