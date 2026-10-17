@@ -15,6 +15,13 @@ Step-by-step guides for testnet miners. If you're just getting started, follow t
 | 6. Explorer | [Run your own explorer](run-an-explorer.md) | Optional - watch the chain in a browser |
 | 7. More certificates | [When your certificates run out](get-a-testnet-certificate.md#when-your-certificates-run-out) | When a certificate's blocks run out |
 
+## Help and reference
+
+| Page | When to read it |
+|------|----------------|
+| [Troubleshooting and FAQ](troubleshooting.md) | A command printed an error, or you have a question |
+| [Reference](reference.md) | Every command, file, setting and network number on one page |
+
 ## Situational guides
 
 | Guide | When to read it |

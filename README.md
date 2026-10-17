@@ -41,6 +41,7 @@ You can watch the network at **[explore.sevenfortunas.com](https://explore.seven
 
 ## Get help
 
+- **Something not working?** [Troubleshooting and FAQ](docs/troubleshooting.md) covers the messages you're likely to see, and the [Reference](docs/reference.md) lists every command, file and setting.
 - **Questions, ideas and show-and-tell:** [GitHub Discussions](https://github.com/Seven-Fortunas/7fchain/discussions). Start with [Q&A](https://github.com/Seven-Fortunas/7fchain/discussions/categories/q-a).
 - **Found a security problem?** Don't open a public issue. Report it privately as described in [SECURITY.md](SECURITY.md), or email security@sevenfortunas.com.
 - **Anything else:** build@sevenfortunas.com

@@ -87,4 +87,5 @@ starts back up with its height intact has exercised the parts that matter.
 ## Trouble?
 
 - **"command not found"** — on Linux or WSL, open a new terminal so your `PATH` picks up the programs `setup.sh` installed. On macOS, run `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc` once, then open a new terminal.
-- **Stuck "waiting for a trusted peer"** — the network's peers may be down or unreachable; the node will connect and sync automatically once they're back.
+- **Stuck "waiting for a trusted peer"** — your node can't reach the network's hubs on port 7788. Check that this machine can make outgoing connections on that port; the node keeps trying and syncs as soon as it connects.
+- **Anything else** — see [Troubleshooting and FAQ](troubleshooting.md).
