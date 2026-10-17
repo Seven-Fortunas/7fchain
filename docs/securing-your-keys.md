@@ -1,6 +1,6 @@
 # Securing Your Keys for Mainnet
 
-> **This is mainnet guidance.** On **testnet**, ignore all of this — run everything on one ordinary machine and practice. The extra care here is for **mainnet, where your coins have real value.** (Mainnet isn't live yet; this is how you'll set up when it launches.)
+> **This is mainnet guidance.** On **testnet**, ignore all of this — run everything on one ordinary machine and practice. The extra care here is for **mainnet, where your coins have real value.** Mainnet runs the same software as testnet, so the commands are the same; what changes is where you run them.
 
 ## The idea: keep the keys that control money offline
 

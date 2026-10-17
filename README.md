@@ -47,7 +47,7 @@ You can watch the network at **[explore.sevenfortunas.com](https://explore.seven
 
 ## Status
 
-7fchain is on **testnet**. Mainnet launches once the network is producing blocks from 70 distinct, geographically distributed miners — our goal is December 2026, but the condition comes first: the date doesn't override the threshold. **No meme coins. No spam. No scams. Only utility.**
+7fchain is on **testnet**, which runs the same software and protocol values as mainnet; mainnet differs only in its own set of nine Root key holders. Mainnet launches once the network is producing blocks from 70 distinct, geographically distributed miners — our goal is December 2026, but the condition comes first: the date doesn't override the threshold. **No meme coins. No spam. No scams. Only utility.**
 
 ## Free to use
 

@@ -1,6 +1,6 @@
 # Become a 7fchain Testnet Miner
 
-7fchain is live on **testnet** — this is how you join it. Testnet is where we harden the network together before mainnet: you run a real miner, earn testnet 7fCOIN (no monetary value yet), and help us prove out the software and the automated certificate registrar. It runs on an ordinary computer — no GPU, no special hardware.
+7fchain is live on **testnet** — this is how you join it. Testnet runs the same software and protocol values as mainnet; mainnet differs only in its own set of nine Root key holders. You run a real miner and earn testnet 7fCOIN, which has no monetary value. It runs on an ordinary computer — no GPU, no special hardware.
 
 **Already mining?** To install a new release over your existing node, follow [Update your miner](update-your-miner.md).
 
