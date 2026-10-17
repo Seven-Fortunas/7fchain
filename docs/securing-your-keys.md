@@ -49,7 +49,7 @@ This writes, as on testnet, `airgap-out/miner-0/transport.json` (your node key, 
 
 ## Spending what you mine
 
-Rewards pile up at your payout address, which is public — but the key to **spend** them lives only on your cold machine. You sign a spend offline and broadcast it from an online machine, so the spending key is never exposed. *(Detailed cold-spending guide: coming soon.)*
+Rewards pile up at your payout address, which is public — but the key to **spend** them lives only on your cold machine. You sign a spend offline and broadcast it from an online machine, so the spending key is never exposed.
 
 ## Habits that keep it safe
 

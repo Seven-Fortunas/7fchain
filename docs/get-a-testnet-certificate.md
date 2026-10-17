@@ -6,7 +6,7 @@ A certificate is what lets your node join the network and mine. **Testnet certif
 
 ## What you need
 
-- **An API key** — a 16-character code. While the testnet is young, keys are **by invitation**: if you've been invited, you'll have received one. Self-service sign-up is coming.
+- **An API key** — a 16-character code. While the testnet is young, keys are **by invitation**: if you've been invited, you'll have received one.
 - An internet connection on the machine that runs your node.
 
 Treat the key like a password: don't post it, and don't type it straight onto the command line, where it would be saved in your shell history.

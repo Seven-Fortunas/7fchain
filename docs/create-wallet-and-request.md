@@ -14,7 +14,7 @@ You'll set up a few secrets along the way — keep them straight:
 
 > **Testnet vs. mainnet — where you run this matters.** On **testnet**, run everything on one ordinary machine and write your recovery phrase on paper — that's the point of practicing. On **mainnet**, run `sf-wallet init` and `sf-wallet miner-export` on an **air-gapped (never-online) machine**. Then carry only `transport.json` (your node key, encrypted) to your online "hot" node, while your **recovery phrase and your reward key never leave the air-gapped machine.** Full procedure: [Securing your keys for mainnet](securing-your-keys.md).
 
-> *(If a command says "not found," open a new terminal — `setup.sh` adds the programs to your `PATH`, which a fresh shell picks up.)*
+> *(If a command says "not found": on Linux or WSL, open a new terminal — `setup.sh` adds the programs to your `PATH`, which a fresh shell picks up. On macOS, run `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc` once, then open a new terminal.)*
 
 ## 1. Go to your node home
 

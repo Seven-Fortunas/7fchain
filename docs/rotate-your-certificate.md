@@ -1,14 +1,14 @@
 # Rotate to a New Certificate
 
-Every certificate mines a limited number of blocks over its life. When yours is used up, your node stops winning blocks — you don't lose anything, you just need to move it onto a fresh certificate. That's **rotation**, and it takes three steps.
+**Most miners never need this page.** When a certificate's blocks run out, the usual fix is to get another for the identity you already mine with: `sf-node obtain --count 1`, and the running node picks it up without a restart. See [When your certificates run out](get-a-testnet-certificate.md#when-your-certificates-run-out).
 
-Rotation is also how you recover if a certificate is ever revoked, and how you switch between identities you've already set up.
+**Rotation** moves your node onto a *different identity*, with its own key, certificates and payout address. Use it to start a new identity, to recover if a certificate is ever revoked, or to switch between identities you've already set up. It takes three steps.
 
 > **Your coins are safe.** Rotating changes your node's *identity*, not your wallet. Coins already paid to your reward address stay yours no matter what happens to the certificate that earned them. A new identity gets its own reward address; both keep paying out.
 
 ## Before you start
 
-You can prepare a replacement **before** the current one runs out — that's the smooth way to do it, because the new certificate is sitting ready and rotation takes seconds. Nothing stops you from staging several in advance.
+You can prepare the new identity **before** you need it. Then its certificate is sitting ready and rotation takes seconds.
 
 Identities are numbered: your first is `miner-0`, your next is `miner-1`, then `miner-2`, and so on. Pick the next unused number and use it everywhere below. These examples use **1**.
 
@@ -35,7 +35,7 @@ With your API key loaded as in [Get a testnet certificate](get-a-testnet-certifi
 sf-node obtain --count 1 --keyfile miner-1/ml-dsa-hot.key.enc
 ```
 
-Name the key file: without it, `obtain` asks for a certificate for the identity your node is mining on now. The certificate and its chain install themselves into `miner-1/` — nothing to copy.
+Name the key file: without it, `obtain` asks for a certificate for the identity your node is mining on now. The certificate installs itself into `miner-1/` (the certificates that signed it are already in `certs/`) — nothing to copy.
 
 ## 3. Switch the node over
 
@@ -43,7 +43,7 @@ Name the key file: without it, `obtain` asks for a certificate for the identity 
 sf-node rotate --to 1
 ```
 
-That's it. This edits only the three identity settings in your config and leaves everything else — your peers, your mining schedule, your ports — exactly as it was.
+That's it. This changes one setting in your config, `miner_index`, and leaves everything else — your peers, your mining schedule, your ports — exactly as it was.
 
 It checks the new identity is complete before changing anything: the folder exists, the keys are there, and the certificate actually matches the key. If something's missing it tells you what and **changes nothing**, so a half-finished rotation can't leave your node unable to start.
 
@@ -62,9 +62,12 @@ Rotation isn't one-way. Every identity you've set up stays on disk, so `sf-node 
 
 ## Trouble?
 
-- **"rotate refused: identity dir … does not exist"** — step 1 hasn't been run for that number, or you used a different `--miner-index` than you're rotating to.
-- **"rotate refused: no miner certificate in …"** — step 2 hasn't been run for this identity yet.
-- **"rotate refused: none of the miner-cert(s) … match the ml-dsa key"** — that certificate belongs to a different identity. Re-run step 2 with `--keyfile` naming this identity's key.
+- **"rotate refused: no usable certificate at miner-1 … Staged: …"** — nothing usable is set up under that number. `Staged:` lists the identities that are. Run steps 1 and 2 for the number you're rotating to.
+- **"rotate refused: miner-1 is staged but unusable: no ml-dsa-hot.key.enc"** — step 1 hasn't been completed for this identity: run the `sf-node import` line.
+- **"… unusable: no miner chain (\*.pem)"** — step 2 hasn't been run for this identity yet.
+- **"… unusable: no chain here certifies this directory's hot key (cert/key mismatch)"** — the certificate in `miner-1/` belongs to a different identity. Re-run step 2 with `--keyfile` naming this identity's key.
+
+  The refusal ends with a hint to run `sf-node csr` and copy a chain in by hand. Ignore it: `sf-node obtain`, as in step 2, does that for you.
 - **Node still won't mine after restarting** — it needs to sync to the current tip first, which is normal. If it says it's waiting for a trusted peer, the network's peers will pick it up automatically.
 
 ---

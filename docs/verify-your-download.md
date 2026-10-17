@@ -5,21 +5,31 @@ Always verify a binary before you run it. Every 7fchain release ships a `SHA256S
 **Only ever download from the official Releases page:**
 https://github.com/Seven-Fortunas/7fchain/releases/latest
 
-## Verify on Linux (Ubuntu / WSL)
+The examples below use release `testnet-2026-10-16.2` on `x86_64-linux`. Use your own release and platform: `x86_64-linux`, `aarch64-linux`, `arm64-macos` or `x86_64-macos` (`uname -sm` tells you which; see the table in [Update your miner](update-your-miner.md#1-download-the-new-release)).
 
-1. Put the downloaded archive (e.g. `7fchain-testnet-2026-10-11-x86_64-linux.tar.gz`) and `SHA256SUMS` in the same folder.
-2. In that folder, check your archive against its line in `SHA256SUMS` (use your platform — `x86_64-linux` or `aarch64-linux`):
+## Check the fingerprint
+
+1. Put the downloaded archive (e.g. `7fchain-testnet-2026-10-16.2-x86_64-linux.tar.gz`) and `SHA256SUMS` in the same folder.
+2. In that folder, check your archive against its line in `SHA256SUMS`.
+
+   On Linux (Ubuntu / WSL):
 
    ```
    grep x86_64-linux.tar.gz SHA256SUMS | sha256sum -c
    ```
 
-   `SHA256SUMS` lists the archives for every platform; `grep` picks out the line for yours, and `sha256sum -c` checks your file against it.
+   On macOS (this example is for Apple silicon, `arm64-macos`):
+
+   ```
+   grep arm64-macos.tar.gz SHA256SUMS | shasum -a 256 -c
+   ```
+
+   `SHA256SUMS` lists the archives for every platform; `grep` picks out the line for yours, and `sha256sum -c` (or `shasum -a 256 -c`) checks your file against it.
 
 3. You should see your archive's name followed by **`OK`**:
 
    ```
-   7fchain-testnet-2026-10-11-x86_64-linux.tar.gz: OK
+   7fchain-testnet-2026-10-16.2-x86_64-linux.tar.gz: OK
    ```
 
 **If it says just `FAILED`, do not run the binary.** The file is corrupted or tampered with — delete it and download again from the official Releases page.
@@ -28,18 +38,18 @@ If it says `FAILED open or read` or `no properly formatted checksum lines found`
 
 ### Optional: see the comparison yourself
 
-To see exactly what is being compared, print the fingerprint `SHA256SUMS` expects and the fingerprint of your file, one under the other:
+To see exactly what is being compared, print the fingerprint `SHA256SUMS` expects and the fingerprint of your file, one under the other (on macOS, use `shasum -a 256` in place of `sha256sum`):
 
 ```
 echo "expected: $(grep x86_64-linux.tar.gz SHA256SUMS)"
-echo "actual:   $(sha256sum 7fchain-testnet-2026-10-11-x86_64-linux.tar.gz)"
+echo "actual:   $(sha256sum 7fchain-testnet-2026-10-16.2-x86_64-linux.tar.gz)"
 ```
 
 The two long codes must be identical, character for character:
 
 ```
-expected: 03ccf5885b5db6d1668eb9e128f924b5238178a0d0214900634779b84f0f42b7  7fchain-testnet-2026-10-11-x86_64-linux.tar.gz
-actual:   03ccf5885b5db6d1668eb9e128f924b5238178a0d0214900634779b84f0f42b7  7fchain-testnet-2026-10-11-x86_64-linux.tar.gz
+expected: 80c4eb87fc60737c376c17c555d09c4e6c2559c7d66e15d5e889b96d6da19687  7fchain-testnet-2026-10-16.2-x86_64-linux.tar.gz
+actual:   80c4eb87fc60737c376c17c555d09c4e6c2559c7d66e15d5e889b96d6da19687  7fchain-testnet-2026-10-16.2-x86_64-linux.tar.gz
 ```
 
 (Your codes will differ from these for other platforms and later releases.)
@@ -49,8 +59,8 @@ actual:   03ccf5885b5db6d1668eb9e128f924b5238178a0d0214900634779b84f0f42b7  7fch
 Unpack the verified archive and run its setup script (use your archive's name):
 
 ```
-tar xzf 7fchain-testnet-2026-10-11-x86_64-linux.tar.gz
-cd 7fchain-testnet-2026-10-11-x86_64-linux
+tar xzf 7fchain-testnet-2026-10-16.2-x86_64-linux.tar.gz
+cd 7fchain-testnet-2026-10-16.2-x86_64-linux
 ./setup.sh
 ```
 

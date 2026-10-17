@@ -38,8 +38,8 @@ proves the whole path works before you leave the node to itself.
 block it takes:
 
 ```
-[dispatch] accepted block 1 from 203.0.113.10:8333
-[dispatch] accepted block 2 from 203.0.113.10:8333
+[dispatch] accepted block 1 from 203.0.113.10:7788
+[dispatch] accepted block 2 from 203.0.113.10:7788
 ```
 
 Let it get through a hundred or so. Before those you'll have seen
@@ -59,7 +59,7 @@ and begins mining. The network's current height is shown at
 sf-node stop ~/7fchain/testnet/l1/node-config.json
 ```
 
-It prints `Stopping sf-node (pid N) - sending SIGTERM...` and then
+It prints `Stopping sf-node (pid N) — sending SIGTERM…` and then
 `sf-node stopped cleanly.` Pressing `Ctrl-C` in the node's own terminal does the
 same thing — both take the same clean shutdown, which saves the node's address
 book and closes the database properly. Don't use `kill -9`.
@@ -81,10 +81,10 @@ starts back up with its height intact has exercised the parts that matter.
 ## Good to know
 
 - You enter your node-startup password every time you start the node.
-- Each certificate can mine a limited number of blocks; when it's used up, get another and switch over with `sf-node rotate --to <N>` — see [Rotate to a new certificate](rotate-your-certificate.md).
-- Each identity (`miner-0`, `miner-1`, …) gets its own certificate and payout address; [Rotate to a new certificate](rotate-your-certificate.md) shows how to add one.
+- Each certificate can mine a limited number of blocks; when it's used up, get another with `sf-node obtain --count 1` — the running node picks it up without a restart. See [When your certificates run out](get-a-testnet-certificate.md#when-your-certificates-run-out).
+- Each identity (`miner-0`, `miner-1`, …) gets its own certificates and payout address; [Rotate to a new certificate](rotate-your-certificate.md) shows how to add one and switch to it.
 
 ## Trouble?
 
-- **"command not found"** — open a new terminal so your `PATH` picks up the programs `setup.sh` installed.
+- **"command not found"** — on Linux or WSL, open a new terminal so your `PATH` picks up the programs `setup.sh` installed. On macOS, run `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc` once, then open a new terminal.
 - **Stuck "waiting for a trusted peer"** — the network's peers may be down or unreachable; the node will connect and sync automatically once they're back.

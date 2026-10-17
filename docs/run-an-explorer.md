@@ -9,11 +9,12 @@ You don't need it to mine. It's a nice way to watch your node and the network. T
 Make sure your node is running first (see [Run your node](run-your-node.md)) — the explorer reads from it. Then, in a second terminal:
 
 ```
-sf-explorer --network testnet --node 127.0.0.1:7735
+sf-explorer --network testnet --node 127.0.0.1:7735 --listen 127.0.0.1:8080
 ```
 
 - `--network testnet` — the network to display.
 - `--node 127.0.0.1:7735` — your local node's testnet RPC address.
+- `--listen 127.0.0.1:8080` — serve the explorer to this machine only. Without it, the explorer listens on `0.0.0.0:8080`, so other devices on your network can open it too.
 
 Then open **http://localhost:8080** in your browser.
 

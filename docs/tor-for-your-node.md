@@ -9,12 +9,14 @@ You can come back and do it later without changing anything else about your setu
 Your node dials out to the network's hubs and keeps up with the chain that way.
 What it cannot do, on an ordinary home connection, is accept a connection coming
 *in*: your router gives your machine a private address, so there is nothing for
-another node to dial. Every home miner is in the same position, which is why no
-two home miners reach each other directly today — they all talk through the hubs.
+another node to dial. Without Tor, a home miner can reach other nodes but cannot
+be reached by them.
 
 Publishing a Tor v3 onion service gives your node an address other nodes can
 dial. You do not have to forward a port on your router, pay for a static IP, or
-expose your home IP address.
+expose your home IP address. Once you set it in your config (step 4), your node
+announces the address to its peers and they pass it on, so other nodes find you
+and connect on their own.
 
 Be clear on the limits:
 
@@ -25,9 +27,6 @@ Be clear on the limits:
   ML-KEM-768, so the link between two nodes is post-quantum either way. Tor's own
   encryption is classical. What Tor adds here is an inbound route and privacy
   about where your node is — not confidentiality of what it sends.
-- **Nobody finds you automatically yet.** Peer-address gossip is not built, so
-  you share your address with another operator and they add it to their
-  configuration. Automatic discovery is planned.
 
 ## 1. Install Tor
 
@@ -37,15 +36,23 @@ On Debian, Ubuntu, or WSL:
 sudo apt install tor
 ```
 
+On macOS, with [Homebrew](https://brew.sh):
+
+```
+brew install tor
+```
+
 The SOCKS5 proxy your node dials out through runs on `127.0.0.1:9050` by
 default, which is exactly where your node already looks for it. There is nothing
 to configure for outbound connections.
 
 ## 2. Publish a hidden service
 
-Find your node's `listen_port` in `~/7fchain/testnet/l1/node-config.json`. Then
-edit `/etc/tor/torrc` and add the following, using that same port in both places
-on the last line:
+Find your node's `listen_port` in `~/7fchain/testnet/l1/node-config.json`
+(`7788` unless you changed it). Then add the lines below to Tor's configuration
+file, using that same port in both places on the last line.
+
+On Debian, Ubuntu, or WSL, edit `/etc/tor/torrc`:
 
 ```
 HiddenServiceDir /var/lib/tor/7fchain/
@@ -53,18 +60,40 @@ HiddenServiceVersion 3
 HiddenServicePort <listen_port> 127.0.0.1:<listen_port>
 ```
 
+On macOS, the file is `$(brew --prefix)/etc/tor/torrc` and the service folder
+lives under your Homebrew prefix. These lines create the folder and add the
+three settings (change both `7788`s if your `listen_port` is different):
+
+```
+mkdir -p "$(brew --prefix)/var/lib/tor"
+echo "HiddenServiceDir $(brew --prefix)/var/lib/tor/7fchain/" >> "$(brew --prefix)/etc/tor/torrc"
+echo "HiddenServiceVersion 3" >> "$(brew --prefix)/etc/tor/torrc"
+echo "HiddenServicePort 7788 127.0.0.1:7788" >> "$(brew --prefix)/etc/tor/torrc"
+```
+
 ## 3. Restart Tor and read your address
+
+On Debian, Ubuntu, or WSL:
 
 ```
 sudo systemctl restart tor
 sudo cat /var/lib/tor/7fchain/hostname
 ```
 
+On WSL without systemd, use `sudo service tor restart` for the first line.
+
+On macOS:
+
+```
+brew services restart tor
+cat "$(brew --prefix)/var/lib/tor/7fchain/hostname"
+```
+
 That prints a 56-character address ending in `.onion`. Tor generated the key
 itself and keeps it in that folder; back the folder up if you want to keep the
 same address after rebuilding the machine.
 
-## 4. Record your address in your config (optional)
+## 4. Announce your address
 
 In `~/7fchain/testnet/l1/node-config.json`, set `advertised_onion` to your
 address followed by your `listen_port`:
@@ -73,22 +102,33 @@ address followed by your `listen_port`:
 "advertised_onion": "<your-56-char-address>.onion:<listen_port>"
 ```
 
-This is how your node will offer itself to other nodes once address gossip
-ships. **It has no effect today**, and leaving it unset costs you nothing — your
-node still peers normally, still dials other onion addresses, and still accepts
-inbound onion connections from anyone you hand the address to. Set it now if you
-would rather not revisit the file later.
+Then restart your node (stop it and start it again, as in
+[Run your node](run-your-node.md)). From then on, every peer your node connects
+to is told your address, passes it on to its own peers, and keeps it in its
+address book. Your node re-announces it regularly so it stays fresh, and other
+nodes dial you over Tor without anyone configuring anything.
 
-## 5. Give your address to someone
+If you leave `advertised_onion` unset, your node still peers normally and still
+accepts inbound onion connections from anyone you give the address to. It just
+is not announced.
 
-Send your `.onion` address to an operator you want to peer with, over any
-channel you trust. They add `"<your-address>.onion:<listen_port>"` to
-`seed_peers` in their own `node-config.json` and restart.
+## 5. Peer with someone directly (optional)
 
-Leave your own `seed_peers` alone. The hubs already listed there are how your
-node syncs the chain, and removing them would cut you off.
+Announcing is enough for the network to find you. If you also want a particular
+node to connect to yours straight away, send your `.onion` address and port to
+its operator over any channel you trust. From their node home they run:
 
-Restart your node and carry on with [Become a miner](become-a-miner.md).
+```
+sf-node peers add <your-56-char-address>.onion:<listen_port>
+```
+
+and restart their node. `sf-node peers` lists the peers added this way, and
+`sf-node peers remove <host:port>` takes one off.
+
+You never need to add the network's hubs yourself: your node always knows them
+and dials them on startup, whatever your `seed_peers` list holds.
+
+Carry on with [Become a miner](become-a-miner.md).
 
 ---
 

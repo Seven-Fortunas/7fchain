@@ -10,7 +10,7 @@
 
 ## 1. Download and verify
 
-Download the build from the [latest Release](https://github.com/Seven-Fortunas/7fchain/releases/latest) and check it against the published `SHA256SUMS` before running. The bundle includes the `sf-node`/`sf-wallet`/`sf-explorer` programs plus the public network files (the genesis and dev-fund configs and the network's Root, Deputy and CentCom certificates); the trusted root keys are built into the node. (Your certificate and the chain that validates it arrive later, in step 3.) Unzip it and run `./setup.sh` once — it installs the programs and lays out your node folders.
+Download the build from the [latest Release](https://github.com/Seven-Fortunas/7fchain/releases/latest) and check it against the published `SHA256SUMS` before running. The bundle includes the `sf-node`/`sf-wallet`/`sf-explorer` programs plus the public network files (the genesis and dev-fund configs and the network's Root, Deputy and CentCom certificates); the trusted root keys are built into the node. (Your certificate and the chain that validates it arrive later, in step 3.) Unpack it (`tar xzf`, as in [Verify your download](verify-your-download.md#then-continue)) and run `./setup.sh` once — it installs the programs and lays out your node folders.
 → **Step-by-step:** [Verify your download](verify-your-download.md)
 
 ## 2. Create your wallet and miner identity
@@ -38,16 +38,16 @@ An ordinary home connection gives your node no way to accept incoming connection
 Run a local block explorer to see blocks, transactions, and your node's progress in your browser. The network's public explorer is at [explore.sevenfortunas.com](https://explore.sevenfortunas.com/).
 → **Step-by-step:** [Run your own explorer](run-an-explorer.md)
 
-## 7. Rotate when your certificate runs out
+## 7. Get more certificates when yours run out
 
-Each certificate mines a limited number of blocks. When yours is used up, get another and switch your node onto it — one command, and everything else about your setup stays put.
-→ **Step-by-step:** [Rotate to a new certificate](rotate-your-certificate.md)
+Each certificate mines a limited number of blocks. When yours is used up, get another with `sf-node obtain --count 1`. It lands beside the old one and your node picks it up on its own, with no restart.
+→ **Step-by-step:** [When your certificates run out](get-a-testnet-certificate.md#when-your-certificates-run-out). To mine under a second identity instead, see [Rotate to a new certificate](rotate-your-certificate.md).
 
 ## Good to know
 
 - **It's testnet.** Testnet 7fCOIN has no monetary value — this is for practice and to help harden the network.
 - **Your coins are yours.** Your spending keys are separate from your node's identity, so even if a certificate is revoked, coins already paid to your address stay yours.
-- **Per-cert block cap.** Each certificate mines a limited number of blocks over its life; when it's used up, get another and [rotate onto it](rotate-your-certificate.md). You can stage the replacement in advance so there's no downtime.
+- **Per-cert block cap.** Each certificate mines a limited number of blocks over its life; when it's used up, your node moves to the next one it holds. [Get more](get-a-testnet-certificate.md#when-your-certificates-run-out) in advance, while the node runs, so there's no downtime.
 - **Cooldown.** After you mine a block, your certificate waits a while before it can mine again — spreading rewards across the community so small miners get a fair share.
 
 ## Feedback

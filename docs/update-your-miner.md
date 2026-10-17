@@ -2,7 +2,7 @@
 
 For miners who already run a 7fchain node and want the new release. New miners: follow [Become a miner](become-a-miner.md) instead.
 
-> **The current release is `testnet-2026-10-16.2`, and the testnet restarted from block 1 with it.** If you mined with `testnet-2026-10-11` or earlier, your old chain and certificates no longer work. Follow every step below, including steps 6 and 7. Your wallet and keys are kept.
+> **The current release is `testnet-2026-10-16.2`, and the testnet restarted from block 1 with it.** If you mined with any release before `testnet-2026-10-16.2`, your old chain and certificates no longer work. Follow every step below, including steps 6 and 7. Your wallet and keys are kept.
 
 All commands run on your node machine. Your node home is `~/7fchain/testnet/l1`.
 
@@ -95,7 +95,7 @@ printf 'API key: '; read -rs SF_OBTAIN_KEY; echo; export SF_OBTAIN_KEY
 sf-node obtain --count 1
 ```
 
-Enter your **node-startup password** when asked. You should see `installed miner-0/ ...` and `wrote session chain .../session-chain.pem`; the new session chain replaces the old one. When you're done, run `unset SF_OBTAIN_KEY`. Details and error messages: [Get a testnet certificate](get-a-testnet-certificate.md).
+Enter your **node-startup password** when asked. You should see `installed miner-0/ ...` and then `session chain already at .../session-chain.pem`: your node keeps the session certificate it already has, which still works after the restart. When you're done, run `unset SF_OBTAIN_KEY`. Details and error messages: [Get a testnet certificate](get-a-testnet-certificate.md).
 
 ## 8. Start your node
 
@@ -103,7 +103,7 @@ Enter your **node-startup password** when asked. You should see `installed miner
 sf-node start ~/7fchain/testnet/l1/node-config.json
 ```
 
-Enter your node-startup password. After a restart release the node downloads the chain from block 1, printing a line for each block, such as `[dispatch] accepted block 1 from 203.0.113.10:8333`. When it reaches the network's tip it prints `[trusted-tip] OK: local chain == consensus tip` and starts mining. Compare its height with the network's at [explore.sevenfortunas.com](https://explore.sevenfortunas.com/).
+Enter your node-startup password. After a restart release the node downloads the chain from block 1, printing a line for each block, such as `[dispatch] accepted block 1 from 203.0.113.10:7788`. When it reaches the network's tip it prints `[trusted-tip] OK: local chain == consensus tip` and starts mining. Compare its height with the network's at [explore.sevenfortunas.com](https://explore.sevenfortunas.com/).
 
 ## 9. Check your certificate
 

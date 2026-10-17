@@ -7,7 +7,7 @@
 **Two ways to take part:**
 
 - **Run a miner.** Help secure the network and earn 7fCOIN. CPU-mineable, certificate-gated, with a cooldown that keeps rewards spread across the community. → [Become a miner](docs/become-a-miner.md)
-- **Build on Layer 2.** Seven Fortunas operates Layer 2 networks for enterprises and governments, and partners can run their own. *(L2 white paper coming as the L2 MVP lands.)*
+- **Build on Layer 2.** Seven Fortunas operates Layer 2 networks for enterprises and governments, and partners can run their own.
 
 ## Download
 
@@ -45,4 +45,4 @@ You can watch the network at **[explore.sevenfortunas.com](https://explore.seven
 
 ## Free to use
 
-The 7fchain binaries are free to download, run, and share — no license fee, no restrictions. On testnet, miner certificates are free too (see [Become a miner](docs/become-a-miner.md)); on mainnet the only cost to mine will be a low-cost post-quantum miner certificate. The white papers and documentation here are free to read and redistribute.
+The 7fchain binaries are free to download, run, and share — no license fee, no restrictions. On testnet, miner certificates are free and issued by invitation (see [Become a miner](docs/become-a-miner.md)). Mainnet certificates are issued under a published policy. The white papers and documentation here are free to read and redistribute.
