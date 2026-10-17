@@ -9,5 +9,6 @@
   "MD026": false, // trailing punctuation in headings
   "MD036": false, // emphasis used as a note
   "MD038": false, // spaces inside code spans, e.g. ` (1)`
-  "MD028": false  // two blockquotes separated by a blank line
+  "MD028": false, // two blockquotes separated by a blank line
+  "MD060": false  // spacing around table pipes
 }

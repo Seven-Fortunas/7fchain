@@ -50,6 +50,8 @@ jobs:
             --max-retries 3
             --accept 200,206,429
             --exclude 'github\.com/Seven-Fortunas/7fchain/security/advisories/new'
+            --exclude 'youtube\.com/results'
+            --exclude-loopback
             README.md SECURITY.md 'docs/*.md' 'papers/*.md'
           fail: true
         env:
