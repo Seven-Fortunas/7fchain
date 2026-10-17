@@ -29,7 +29,7 @@ Your recovery phrase restores every key you have. Protect it as you would a crit
 - For a **small amount**, that might mean writing the words on paper and putting them in a safe.
 - For a **large amount**, it might mean stamping the words onto **metal plates** (fireproof and waterproof) sealed with **tamper-evident stickers**, and **splitting them across separate locations** — for example, some of the words in a safe at home and the rest in a safety-deposit box at a bank — so no single place ever holds the whole phrase [1].
 
-> **A note on hardware wallets.** Electronic hardware wallets such as Ledger and Trezor are built for Bitcoin- and Ethereum-style keys and **do not yet support 7fchain's post-quantum keys** — don't rely on one for 7fchain. Today, secure physical backup of your recovery phrase (paper or metal) is the method.
+> **A note on hardware wallets.** Electronic hardware wallets such as Ledger and Trezor are built for Bitcoin- and Ethereum-style keys and **don't support 7fchain's post-quantum keys** — don't rely on one for 7fchain. Secure physical backup of your recovery phrase (paper or metal) is the method.
 
 ## The workflow
 

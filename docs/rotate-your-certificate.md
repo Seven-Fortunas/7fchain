@@ -62,12 +62,12 @@ Rotation isn't one-way. Every identity you've set up stays on disk, so `sf-node 
 
 ## Trouble?
 
+Every `rotate refused` message ends with the commands that set up that identity: the same ones as steps 1 and 2 above.
+
 - **"rotate refused: no usable certificate at miner-1 … Staged: …"** — nothing usable is set up under that number. `Staged:` lists the identities that are. Run steps 1 and 2 for the number you're rotating to.
 - **"rotate refused: miner-1 is staged but unusable: no ml-dsa-hot.key.enc"** — step 1 hasn't been completed for this identity: run the `sf-node import` line.
 - **"… unusable: no miner chain (\*.pem)"** — step 2 hasn't been run for this identity yet.
 - **"… unusable: no chain here certifies this directory's hot key (cert/key mismatch)"** — the certificate in `miner-1/` belongs to a different identity. Re-run step 2 with `--keyfile` naming this identity's key.
-
-  The refusal ends with a hint to run `sf-node csr` and copy a chain in by hand. Ignore it: `sf-node obtain`, as in step 2, does that for you.
 - **Node still won't mine after restarting** — it needs to sync to the current tip first, which is normal. If it says it's waiting for a trusted peer, the network's peers will pick it up automatically.
 
 ---

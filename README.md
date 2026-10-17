@@ -39,6 +39,12 @@ You can watch the network at **[explore.sevenfortunas.com](https://explore.seven
 
 *Each paper is provided as Markdown, readable here on GitHub and by AI agents, in [`papers/`](papers/).*
 
+## Get help
+
+- **Questions, ideas and show-and-tell:** [GitHub Discussions](https://github.com/Seven-Fortunas/7fchain/discussions). Start with [Q&A](https://github.com/Seven-Fortunas/7fchain/discussions/categories/q-a).
+- **Found a security problem?** Don't open a public issue. Report it privately as described in [SECURITY.md](SECURITY.md), or email security@sevenfortunas.com.
+- **Anything else:** build@sevenfortunas.com
+
 ## Status
 
 7fchain is on **testnet**. Mainnet launches once the network is producing blocks from 70 distinct, geographically distributed miners — our goal is December 2026, but the condition comes first: the date doesn't override the threshold. **No meme coins. No spam. No scams. Only utility.**
