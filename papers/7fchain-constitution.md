@@ -20,11 +20,11 @@ We build in the ethos of Satoshi: sound money, public verifiability, and a netwo
 
 The miners are the electorate of 7fchain. Block production, not capital, is the franchise.
 
-The network seats up to **70,000 active miner certificates** at any one time — citizens of the chain. Over a roughly two-year horizon, toward block 140,000, the rotation rules are designed so that block production spreads across a vast number of distinct miners rather than concentrating in a handful. The chain guarantees no one a block; it guarantees everyone a fair shot at one. When the active roster is full, the chain does not close its doors: new participants are admitted with one-shot certificates, so that anyone who wishes to mine a single block may always do so.
+The network seats up to **70,000 active miner certificates** at any one time — citizens of the chain. Over a roughly two-year horizon, toward block 140,000, the rotation rules are designed so that block production spreads across a vast number of distinct miners rather than concentrating in a handful. The chain guarantees no one a block; it guarantees everyone a fair shot at one. When the active roster is full, the chain does not close its doors: every certificate retires once it reaches its lifetime cap, so seats keep opening and new participants keep being admitted.
 
 Three rules keep the franchise broad and equal:
 
-1. **Proof of work for the common machine.** Mining runs on consumer CPUs. The proof of work is built to give no advantage to ASICs, GPUs, or data centers; the gap between the largest and smallest honest operator is measured in dozens, not billions. An old laptop or a twenty-dollar server is a meaningful vote, and no amount of specialized hardware makes one miner's vote worth more.
+1. **Proof of work for the common machine.** Mining runs on consumer CPUs. The proof of work is built to narrow the advantage of ASICs, GPUs, and data centers; the gap between the largest and smallest honest operator is measured in dozens, not billions. An old laptop or a twenty-dollar server is a meaningful vote, and no amount of specialized hardware makes one miner's vote worth more.
 2. **Cooldown rotation.** After a certificate mines a block, it must stand aside while others take their turn. No quantity of hash power buys a second consecutive turn. The reward distributes across the active community, not into pools.
 3. **A lifetime cap per certificate.** Each certificate may produce only a bounded number of blocks across its life. No single seat may dominate, and the early citizens are not paid disproportionately to those who come after.
 
@@ -50,7 +50,7 @@ What you hold, you hold. The chain exists to make that promise true and to keep 
 
 A young chain must survive its infancy. 7fchain is built to **protect itself in its early days from attack**, and to keep protecting itself as it grows.
 
-The certificate gate authenticates every peer and makes hostile flooding expensive. The cooldown and the per-certificate cap deny any actor a dominant share of block production. Revocation removes proven bad actors without closing the network. And the chain anchors its history to Bitcoin's proof of work on a continuous basis, so that its past is timestamped into the most secure ledger on earth and cannot be quietly rewritten.
+The certificate gate authenticates every peer and makes hostile flooding expensive. The cooldown and the per-certificate cap deny any actor a dominant share of block production. Revocation removes proven bad actors without closing the network. And 7fchain's block hashes are written to Bitcoin through OpenTimestamps, so that its past carries a time-dated proof in the most secure ledger on earth and cannot be quietly rewritten.
 
 Defense is layered and deliberate: cryptographic, economic, and procedural at once. The aim is a network that is hard to centralize, hard to capture, and hard to break.
 
@@ -58,7 +58,7 @@ Defense is layered and deliberate: cryptographic, economic, and procedural at on
 
 The chain, like a country, must fund its own defense and upkeep.
 
-Each block dedicates **one percent** of its reward and its fees to the Seven Fortunas developer fund — the standing budget that pays for the cryptography, the certificate authority, the monitoring, and the continued building that keep the common defense and the common infrastructure alive for everyone. Ninety-nine percent goes to the miner who did the work. This one percent can be thought of as the chain's security tax: perpetual, transparent, enforced at consensus, and paid by economic activity in proportion to it. It is the chain's only levy. No tax is levied on the value a holder holds or transfers.
+Each block dedicates **one percent** of its reward and its fees to the 7fchain development fund — a six-of-nine multisig held by the nine Root holders, which no single party controls. It is the standing budget that pays for the chain software and the registry that keep the common defense and the common infrastructure alive for everyone. Ninety-nine percent goes to the miner who did the work. This one percent can be thought of as the chain's security tax: perpetual, transparent, enforced at consensus, and paid by economic activity in proportion to it. It is the chain's only levy. No tax is levied on the value a holder holds or transfers.
 
 ## Article VI — Layer One Anchors, Layer Two Lives
 
@@ -72,5 +72,7 @@ This chain keeps the ethos of Satoshi and adds nothing that betrays it: **no mem
 
 These principles are the chain's constant. The mechanisms that serve them may be amended by the rough consensus of those who run the network, in the open, and never in a direction that narrows the franchise, weakens a holder's claim to his own property, or abandons the people for whom this chain was built.
 
+The genesis coinbase of 7fchain carries its founding message: *"No meme coins. No spam. No scams. Focused on utility, security and decentralization."*
+
 > *"PQ blockchain for the people, with the same ethos as Bitcoin. No meme coins. No spam. No scams. Focused on utility. Designed for decentralization and scarcity. Philippians 4:8."*
-> — inscribed in the genesis coinbase of 7fchain
+> — the founding motto of 7fchain
