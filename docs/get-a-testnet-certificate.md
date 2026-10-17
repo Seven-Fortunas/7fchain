@@ -4,6 +4,21 @@ This is **step 3** of [Become a miner](become-a-miner.md). It assumes you've cre
 
 A certificate is what lets your node join the network and mine. **Testnet certificates are free.** Your node asks for one itself, with a single command, and installs what comes back — there is no file to upload and nothing to copy.
 
+```mermaid
+sequenceDiagram
+    participant You
+    participant Node as sf-node obtain
+    participant Reg as Registrar<br/>obtain.sevenfortunas.com
+    You->>Node: API key and node-startup password
+    Node->>Node: Builds a certificate request,<br/>signed with your node key
+    Node->>Reg: Request and API key
+    Reg-->>Node: The registrar's certificate,<br/>then your miner certificate
+    Node->>Node: Installs them in miner-0/ and certs/
+    Node->>Reg: Session request (first time only)
+    Reg-->>Node: Your node certificate,<br/>saved as session-chain.pem
+    Note over Node,Reg: Your keys never leave your machine
+```
+
 ## What you need
 
 - **An API key** — a 16-character code. While the testnet is young, keys are **by invitation**: if you've been invited, you'll have received one.

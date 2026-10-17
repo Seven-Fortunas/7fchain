@@ -20,6 +20,9 @@ Step-by-step guides for testnet miners. If you're just getting started, follow t
 | Page | When to read it |
 |------|----------------|
 | [Troubleshooting and FAQ](troubleshooting.md) | A command printed an error, or you have a question |
+| [Your mining rewards](rewards.md) | How rewards arrive, when they're spendable, how to send them |
+| [Keep your node running](keep-running.md) | Keep mining after you close the terminal, and stop the computer sleeping |
+| [7fchain on macOS](macos.md) | Mac download, PATH, Tor and staying awake |
 | [Reference](reference.md) | Every command, file, setting and network number on one page |
 
 ## Situational guides
@@ -29,6 +32,7 @@ Step-by-step guides for testnet miners. If you're just getting started, follow t
 | [Rotate to a new certificate](rotate-your-certificate.md) | Mine under a second identity, or recover from a revoked certificate |
 | [Update your miner](update-your-miner.md) | Already mining - install a new release over your node (and what to do after a testnet restart) |
 | [Install WSL (Windows)](install-wsl.md) | Windows users only - install Ubuntu before step 1 |
+| [Uninstall 7fchain](uninstall.md) | Remove the programs, and only then, if you're sure, your data |
 | [Securing your keys for mainnet](securing-your-keys.md) | For mainnet, where your coins have real value. Not needed on testnet |
 
 ## Background reading

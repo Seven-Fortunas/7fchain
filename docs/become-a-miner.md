@@ -8,6 +8,17 @@
 
 > **Testnet vs. mainnet.** On testnet it's fine to run everything on your normal machine — nothing of value is at stake, so it's the place to practice. **For mainnet you'll want your keys on an air-gapped machine** — see [Securing your keys for mainnet](securing-your-keys.md).
 
+```mermaid
+flowchart LR
+    s1["1 · Download and verify<br/>./setup.sh"] --> s2["2 · Wallet and identity<br/>sf-wallet init · miner-export<br/>sf-node import"]
+    s2 --> s3["3 · Certificate<br/>sf-node obtain"]
+    s3 --> s4["4 · Run<br/>sf-node init · start"]
+    s4 --> mining(["Mining"])
+    s4 -.-> s5["5 · Tor<br/>optional"]
+    s4 -.-> s6["6 · Explorer<br/>optional"]
+    mining -.-> s7["7 · More certificates<br/>sf-node obtain --count 1"]
+```
+
 ## 1. Download and verify
 
 Download the build from the [latest Release](https://github.com/Seven-Fortunas/7fchain/releases/latest) and check it against the published `SHA256SUMS` before running. The bundle includes the `sf-node`/`sf-wallet`/`sf-explorer` programs plus the public network files (the genesis and dev-fund configs and the network's Root, Deputy and CentCom certificates); the trusted root keys are built into the node. (Your certificate and the chain that validates it arrive later, in step 3.) Unpack it (`tar xzf`, as in [Verify your download](verify-your-download.md#then-continue)) and run `./setup.sh` once — it installs the programs and lays out your node folders.
@@ -45,7 +56,10 @@ Each certificate mines a limited number of blocks. When yours is used up, get an
 
 ## Good to know
 
-- **It's testnet.** Testnet 7fCOIN has no monetary value — this is for practice and to help harden the network.
+- **Rewards.** How your rewards arrive, and when you can spend them: [Your mining rewards](rewards.md).
+- **Keep it running.** Run the node so it survives closing the terminal: [Keep your node running](keep-running.md). On a Mac, see also [7fchain on macOS](macos.md).
+
+- **It's testnet.** Testnet 7fCOIN has no monetary value, so it's the place to practise.
 - **Your coins are yours.** Your spending keys are separate from your node's identity, so even if a certificate is revoked, coins already paid to your address stay yours.
 - **Per-cert block cap.** Each certificate mines a limited number of blocks over its life; when it's used up, your node moves to the next one it holds. [Get more](get-a-testnet-certificate.md#when-your-certificates-run-out) in advance, while the node runs, so there's no downtime.
 - **Cooldown.** After you mine a block, your certificate waits a while before it can mine again — spreading rewards across the community so small miners get a fair share.

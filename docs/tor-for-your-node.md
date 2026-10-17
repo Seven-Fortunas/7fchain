@@ -18,6 +18,17 @@ expose your home IP address. Once you set it in your config (step 4), your node
 announces the address to its peers and they pass it on, so other nodes find you
 and connect on their own.
 
+```mermaid
+flowchart LR
+    subgraph you["Your computer"]
+        node["Your node"]
+        tor["Tor"]
+    end
+    node -- "outgoing, port 7788" --> hubs["Network hubs<br/>node01 to node07"]
+    others["Other nodes"] -- "to your .onion address" --> tor
+    tor --> node
+```
+
 Be clear on the limits:
 
 - **It does not hide the chain.** Blocks and transactions are public by design.

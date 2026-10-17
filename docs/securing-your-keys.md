@@ -9,6 +9,19 @@ The safest setup uses **two machines**:
 - a **cold machine** — an air-gapped computer that **never connects to the internet** (no Wi-Fi, no ethernet). An old laptop you're no longer using is ideal: wipe it and install Ubuntu fresh [3], then keep it off all networks. It generates and holds your keys.
 - a **hot node** — your normal, online computer that runs `sf-node` and mines.
 
+```mermaid
+flowchart LR
+    subgraph cold["Cold machine · never online"]
+        phrase["Recovery phrase"]
+        wallet["Wallet"]
+        reward["Reward key"]
+    end
+    subgraph hot["Hot node · online"]
+        node["sf-node<br/>node key · certificate"]
+    end
+    wallet -- "transport.json<br/>on a clean USB drive" --> node
+```
+
 Only the things the node actually needs cross from cold to hot. The things that control your money never leave the cold machine.
 
 | Item | Where it lives | What it controls |

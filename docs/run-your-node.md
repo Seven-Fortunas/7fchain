@@ -78,9 +78,24 @@ with whatever height you had reached. It then reconnects and carries on from
 there — it does not download the chain again. A node that starts, stops, and
 starts back up with its height intact has exercised the parts that matter.
 
+## What your node does
+
+```mermaid
+stateDiagram-v2
+    [*] --> Starting: sf-node start
+    Starting --> Syncing: certificate checked, peers connected
+    Syncing --> Mining: in sync with the network
+    Mining --> Cooldown: you mined a block
+    Cooldown --> Mining: another miner's block
+    Mining --> Waiting: all certificates used up
+    Waiting --> Mining: next network block after sf-node obtain
+    Mining --> [*]: sf-node stop
+```
+
 ## Good to know
 
 - You enter your node-startup password every time you start the node.
+- To keep it mining after you close the terminal, see [Keep your node running](keep-running.md).
 - Each certificate can mine a limited number of blocks; when it's used up, get another with `sf-node obtain --count 1` — the running node picks it up without a restart. See [When your certificates run out](get-a-testnet-certificate.md#when-your-certificates-run-out).
 - Each identity (`miner-0`, `miner-1`, …) gets its own certificates and payout address; [Rotate to a new certificate](rotate-your-certificate.md) shows how to add one and switch to it.
 

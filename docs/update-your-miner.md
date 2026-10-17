@@ -6,6 +6,17 @@ For miners who already run a 7fchain node and want the new release. New miners: 
 
 All commands run on your node machine. Your node home is `~/7fchain/testnet/l1`.
 
+```mermaid
+flowchart TD
+    A["1–2 · Download and verify<br/>the new release"] --> B["3 · sf-node stop"]
+    B --> C{"Release notes say the<br/>testnet restarted?"}
+    C -- "No" --> D["4 · ./setup.sh"]
+    C -- "Yes" --> E["4 · ./setup.sh --clean"]
+    E --> F["6–7 · Move old certificates aside,<br/>sf-node obtain --count 1"]
+    D --> G["8 · sf-node start"]
+    F --> G
+```
+
 ## 1. Download the new release
 
 Pick your platform (`uname -sm` tells you which):

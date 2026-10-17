@@ -16,6 +16,18 @@ You'll set up a few secrets along the way — keep them straight:
 
 > *(If a command says "not found": on Linux or WSL, open a new terminal — `setup.sh` adds the programs to your `PATH`, which a fresh shell picks up. On macOS, run `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc` once, then open a new terminal.)*
 
+How the keys fit together:
+
+```mermaid
+flowchart LR
+    phrase["24-word<br/>recovery phrase"] --> wallet["Your wallet<br/>wallet.db.enc"]
+    wallet --> export["sf-wallet miner-export"]
+    export --> transport["airgap-out/miner-0/transport.json<br/>node key, for the node"]
+    export --> payout["airgap-out/miner-0/ml-dsa-payout.key.enc<br/>reward key, stays with the wallet"]
+    transport --> import["sf-node import"]
+    import --> hot["miner-0/ml-dsa-hot.key.enc<br/>node key, under your node-startup password"]
+```
+
 ## 1. Go to your node home
 
 ```
