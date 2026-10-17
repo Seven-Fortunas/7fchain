@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://github.com/Seven-Fortunas/7fchain/discussions/categories/q-a
+    about: Questions about mining, certificates, wallets or the design go to Q&A in Discussions.
+  - name: Look up an error message
+    url: https://github.com/Seven-Fortunas/7fchain/blob/main/docs/troubleshooting.md
+    about: Most messages the programs print are explained in Troubleshooting and FAQ.
+  - name: Report a security vulnerability
+    url: https://github.com/Seven-Fortunas/7fchain/security/advisories/new
+    about: Report it privately. Never open a public issue for a security problem.

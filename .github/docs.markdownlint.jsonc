@@ -1,0 +1,13 @@
+// Markdown style for README, SECURITY and docs. Rules switched off are house style:
+// prose lines aren't wrapped, plain ``` blocks hold commands and output, and
+// troubleshooting headings quote messages that end in punctuation.
+{
+  "default": true,
+  "MD013": false, // line length
+  "MD040": false, // language on every fenced block
+  "MD034": false, // bare URLs
+  "MD026": false, // trailing punctuation in headings
+  "MD036": false, // emphasis used as a note
+  "MD038": false, // spaces inside code spans, e.g. ` (1)`
+  "MD028": false  // two blockquotes separated by a blank line
+}

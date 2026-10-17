@@ -1,0 +1,23 @@
+name: Problem with the docs
+description: A guide is wrong, unclear, or missing a step.
+labels: [documentation]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The link to the guide or paper.
+      placeholder: https://github.com/Seven-Fortunas/7fchain/blob/main/docs/run-your-node.md
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong or unclear
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested wording
+      description: Optional. We'll make the change; the docs here are published from our own sources, so we don't merge pull requests to them.

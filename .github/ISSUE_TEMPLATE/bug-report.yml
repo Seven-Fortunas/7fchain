@@ -1,0 +1,59 @@
+name: Something isn't working
+description: A 7fchain program does something unexpected, or prints an error the docs don't explain.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Check [Troubleshooting and FAQ](https://github.com/Seven-Fortunas/7fchain/blob/main/docs/troubleshooting.md) first: most messages are explained there.
+
+        **Never paste your recovery phrase, any password, your API key, or any key file** (`.enc`, `transport.json`, `payout.json`). Security problems go [privately](https://github.com/Seven-Fortunas/7fchain/security/advisories/new), not here.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The output of `sf-node --version`.
+      placeholder: sf-node 0.2.1 (ad9a103)
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - x86_64-linux
+        - aarch64-linux
+        - Windows (WSL)
+        - arm64-macos (Apple silicon)
+        - x86_64-macos (Intel Mac)
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: What you ran
+      description: The command, and the folder you ran it from.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: What it printed
+      description: The full message, copied from the terminal. Remove any addresses or names you'd rather not share.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I checked Troubleshooting and FAQ.
+          required: true
+        - label: This report contains no recovery phrase, password, API key or key file.
+          required: true
