@@ -30,7 +30,7 @@ body:
     attributes:
       label: Version
       description: The output of `sf-node --version`, if you have it installed.
-      placeholder: sf-node testnet-2026-10-16 (abc1234)
+      placeholder: sf-node 0.2.1 (ad9a103)
   - type: textarea
     id: output
     attributes:
