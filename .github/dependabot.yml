@@ -1,0 +1,13 @@
+# Keeps the SHA-pinned actions in .github/workflows current. Dependabot opens
+# a PR when an action has a release at least 14 days old; mateo-7f reviews and
+# merges it. The repo has no other dependencies (it holds docs and releases).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 14
+    commit-message:
+      prefix: ci
