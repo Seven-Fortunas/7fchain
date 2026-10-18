@@ -1,0 +1,39 @@
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for asking. Many questions are answered in [Troubleshooting and FAQ](https://github.com/Seven-Fortunas/7fchain/blob/main/docs/troubleshooting.md): search it for the message you see.
+
+        Found a bug? Use [Issues](https://github.com/Seven-Fortunas/7fchain/issues/new/choose). Security problem? Report it privately, as in [SECURITY.md](https://github.com/Seven-Fortunas/7fchain/blob/main/SECURITY.md). Never post your recovery phrase, passwords, API key or key files.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: What are you trying to do, and what happens?
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Linux (x86_64)
+        - Linux (ARM64)
+        - macOS (Apple Silicon)
+        - macOS (Intel)
+        - Windows (WSL)
+        - Not about running a node
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The output of `sf-node --version`, if you have it installed.
+      placeholder: sf-node testnet-2026-10-16 (abc1234)
+  - type: textarea
+    id: output
+    attributes:
+      label: What you ran and what it printed
+      description: Paste the command and its output. Remove anything private first.
+      render: shell
