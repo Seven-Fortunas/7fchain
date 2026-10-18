@@ -94,4 +94,4 @@ Your wallet and keys are kept. New miners can ignore this and follow
 
 ## Free to use
 
-The 7fchain binaries are free to download, run, and share — no license fee, no restrictions. On testnet, miner certificates are free and issued by invitation (see [Become a miner](docs/become-a-miner.md)). Mainnet certificates are issued under a published policy. The white papers and documentation here are free to read and redistribute.
+The 7fchain binaries are free to download and run, with no license fee. On testnet, miner certificates are free and issued by invitation (see [Become a miner](docs/become-a-miner.md)). Mainnet certificates are issued under a published policy. The white papers and documentation here are free to read and redistribute.
