@@ -180,6 +180,14 @@ Tor isn't running on this machine, so onion addresses can't be reached. Start To
 
 Normal: your node is downloading the chain. It starts mining after a line beginning `[trusted-tip] OK:`.
 
+### `[trusted-tip] could not resolve trusted peer node03.sevenfortunas.com:7788 at boot …`
+
+Normal, one line each for `node03` to `node07`. At every start the node looks up all seven network hubs; node01 and node02 are the ones in service, and one reachable hub is enough.
+
+### `[trusted-tip] our height {h} is AHEAD of trusted peer max {m} — proceeding …`
+
+Normal at the end of a sync: your node took the newest block a moment before the hub reported it. The next line is `[trusted-tip] OK:`.
+
 ### `… EXCEEDS auto-reorg cap … RESTART THE NODE to apply it`
 
 Your node went down a different branch of the chain. Start it again: it rolls back and resyncs by itself, printing `Chain rolled back to height {h}; resyncing from there.`
