@@ -70,7 +70,7 @@ sf-wallet send --from-miner 0 --to <address> --amount <coins>
 
 Use `--max` in place of `--amount` to send everything that's spendable, and `--dry-run` to see the transaction without sending it.
 
-Your wallet signs with the reward key it derives from your recovery phrase, so sending needs only your wallet and its passphrase. On mainnet the wallet lives on an offline machine: see [Securing your keys for mainnet](securing-your-keys.md).
+Your wallet signs with the reward key it derives from your recovery phrase, so sending needs only your wallet and its passphrase. For mainnet, keep your reward key off networked machines: see [Securing your keys for mainnet](securing-your-keys.md).
 
 ## Questions
 

@@ -2,7 +2,7 @@
 
 The commands, files, settings and network numbers a testnet miner uses, on one page. For step-by-step setup, follow [Become a miner](become-a-miner.md). When something goes wrong, see [Troubleshooting and FAQ](troubleshooting.md).
 
-Everything here matches release `testnet-2026-10-16.2` (`sf-node 0.2.1 (ad9a103)`).
+Everything here matches release `testnet-2026-10-22` (`sf-node 0.2.930 (19237f1)`).
 
 ## The programs
 
@@ -22,14 +22,14 @@ Run these from your node home, `~/7fchain/testnet/l1`: paths such as `airgap-out
 
 | Command | What it does |
 |---|---|
-| `sf-node import airgap-out/miner-0/transport.json` | Imports a miner identity made by `sf-wallet miner-export` and asks you to set the **node-startup password**. Add `--force` to replace an identity already imported at that number |
+| `sf-node import airgap-out/miner-0/transport.json` | Imports a miner identity made by `sf-wallet miner-export` and asks you to set the **boot password**. Add `--force` to replace an identity already imported at that number |
 | `sf-node obtain --count 1` | Gets a miner certificate from the registrar and installs it. Needs your API key (see [environment variables](#environment-variables)). `--count K` gets K certificates at once. `--keyfile miner-1/ml-dsa-hot.key.enc` gets one for a different identity |
 | `sf-node init` | Writes `node-config.json`. Run it once; running it again replaces the file, including any settings you changed by hand. `--miner-index N` sets which identity mines |
-| `sf-node start` | Starts the node in this terminal and asks for your node-startup password |
+| `sf-node start` | Starts the node in this terminal and asks for your boot password (the prompt says `ML-DSA keyfile password`) |
 | `sf-node stop` | Stops a running node cleanly (the same as `Ctrl-C` in its terminal) |
 | `sf-node certs` | Lists your certificates: serial, blocks left, expiry and status (`usable`, `not yet valid`, `expired`, `exhausted`). While the node runs, blocks left shows `?`: stop the node to see the counts |
 | `sf-node rotate --to N` | Switches mining to identity `miner-N`, then you restart the node ([guide](rotate-your-certificate.md)) |
-| `sf-node peers` | Shows the peers you added. `peers add <host:port>`, `peers remove <host:port>` and `peers clear` change the list. The network's hubs are always used and don't need adding, even when this list is empty |
+| `sf-node peers` | Shows the peers you added. `peers add <host:port>`, `peers remove <host:port>` and `peers clear` change the list. The network's hubs are always used and don't need adding, even when this list is empty (`sf-node peers` then says no peers will be dialed; the hubs are dialed anyway) |
 | `sf-node mining` | Shows when your node mines; by default, all day. To mine only from 22:00 to 07:00 (local time), run `sf-node mining remove 0`, then `sf-node mining add 22:00-07:00 background`. `mining reset` returns to all day. Restart the node to apply a change |
 | `sf-node getaddrbalance <t1… address>` | Shows the balance of any address, using your running node |
 
@@ -63,7 +63,7 @@ Your node home is `~/7fchain/testnet/l1`.
 | `wallet.db.enc` | Your wallet, encrypted with your wallet passphrase | **Yes** |
 | `airgap-out/miner-N/transport.json` | Identity N's node key, encrypted with the transport password, for `sf-node import` | **Yes** |
 | `airgap-out/miner-N/ml-dsa-payout.key.enc` | The key that **spends** identity N's rewards (`ml-dsa-payout.key.json`, unencrypted, if you skipped the mining-key password) | **Yes** |
-| `miner-N/ml-dsa-hot.key.enc` | Identity N's node key, encrypted with your node-startup password | **Yes** |
+| `miner-N/ml-dsa-hot.key.enc` | Identity N's node key, encrypted with your boot password | **Yes** |
 | `miner-N/miner-cert-*.pem` | Identity N's certificates, one per file | No |
 | `imported/miner-N/payout.json` | Identity N's payout address | No |
 | `certs/` | The network's certificates and your registrar's certificate | No |

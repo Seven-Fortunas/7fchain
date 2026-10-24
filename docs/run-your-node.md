@@ -17,7 +17,7 @@ The node puts the two together when it starts. A file in `miner-0/` that holds a
 sf-node init ~/7fchain/testnet/l1
 ```
 
-This writes `node-config.json`, pointing the node at your `miner-0/` certificate and the `certs/` folder. You only do this once.
+This writes `node-config.json`, pointing the node at your node home, where it finds `miner-0/`, `certs/` and `session-chain.pem`; you should see `Adopted the session chain already here: …`. It then prints a list of next steps written for other setups: you've done them, so carry on below. You only do this once.
 
 ## 3. Start the node
 
@@ -25,7 +25,7 @@ This writes `node-config.json`, pointing the node at your `miner-0/` certificate
 sf-node start ~/7fchain/testnet/l1/node-config.json
 ```
 
-Enter your **node-startup password** (the one you set during `sf-node import`). At boot the node verifies your certificate chains to a trusted root, connects to the network's peers, catches up to the current tip, and **then** begins mining. It won't mine until it's synced — if peers aren't reachable yet it waits, which is normal. Blocks you win pay your reward address.
+At `Enter ML-DSA keyfile password:`, type your **boot password** (the one you set during `sf-node import`). At boot the node verifies your certificate chains to a trusted root, connects to the network's peers, catches up to the current tip, and **then** begins mining. It won't mine until it's synced — if peers aren't reachable yet it waits, which is normal. Blocks you win pay your reward address.
 
 Leave it running to keep mining. Step 4 shows you how to stop it and start it back up.
 
@@ -65,7 +65,7 @@ same thing — both take the same clean shutdown, which saves the node's address
 book and closes the database properly. Don't use `kill -9`.
 
 **Start it again**, with the same command as step 3. It asks for your
-node-startup password again. This is the part worth watching: on a restart the
+boot password again. This is the part worth watching: on a restart the
 node rebuilds its state from the database on disk instead of from the network,
 which is a different path from a first start. You should see:
 
@@ -94,7 +94,7 @@ stateDiagram-v2
 
 ## Good to know
 
-- You enter your node-startup password every time you start the node.
+- You enter your boot password every time you start the node.
 - To keep it mining after you close the terminal, see [Keep your node running](keep-running.md).
 - Each certificate can mine a limited number of blocks; when it's used up, get another with `sf-node obtain --count 1` — the running node picks it up without a restart. See [When your certificates run out](get-a-testnet-certificate.md#when-your-certificates-run-out).
 - Each identity (`miner-0`, `miner-1`, …) gets its own certificates and payout address; [Rotate to a new certificate](rotate-your-certificate.md) shows how to add one and switch to it.

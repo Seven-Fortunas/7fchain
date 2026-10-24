@@ -18,6 +18,7 @@ Exits 1 on any failure. The source of this file is internal; the copy in the
 public repo's .github/scripts/ is overwritten on every publish and run by the
 Docs checks workflow.
 """
+import json
 import os
 import re
 import shutil
@@ -102,11 +103,16 @@ def check_mermaid(files, errors):
         print(f"warning: mmdc not installed; {len(blocks)} Mermaid diagram(s) not render-checked", file=sys.stderr)
         return len(blocks)
     with tempfile.TemporaryDirectory() as tmp:
+        # Ubuntu 24.04 blocks unprivileged user namespaces, so headless Chrome
+        # can't start its sandbox. The diagrams are our own, so skip it.
+        puppeteer = os.path.join(tmp, "puppeteer.json")
+        with open(puppeteer, "w") as f:
+            json.dump({"args": ["--no-sandbox"]}, f)
         for i, (path, src) in enumerate(blocks):
             mmd, out = os.path.join(tmp, f"{i}.mmd"), os.path.join(tmp, f"{i}.svg")
             with open(mmd, "w") as f:
                 f.write(src)
-            run = subprocess.run([mmdc, "-q", "-i", mmd, "-o", out], capture_output=True, text=True)
+            run = subprocess.run([mmdc, "-q", "-p", puppeteer, "-i", mmd, "-o", out], capture_output=True, text=True)
             if run.returncode != 0:
                 first = run.stderr.strip().splitlines()[0] if run.stderr.strip() else "unknown error"
                 errors.append(f"{path}: Mermaid diagram does not render: {first}")

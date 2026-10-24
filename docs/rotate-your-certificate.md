@@ -21,7 +21,7 @@ sf-wallet miner-export --miner-index 1
 sf-node import airgap-out/miner-1/transport.json
 ```
 
-Same wallet, same recovery phrase — this derives a brand-new identity from it, so there's nothing new to back up. The menu and the passwords are the same as the first time ([step 2](create-wallet-and-request.md)); the node-startup password can be the one you already use. You end up with:
+Same wallet, same recovery phrase — this derives a brand-new identity from it, so there's nothing new to back up. The menu and the passwords are the same as the first time ([step 2](create-wallet-and-request.md)); the boot password can be the one you already use. You end up with:
 
 - `miner-1/` — the key your node will use
 - `imported/miner-1/` — its payout address (a new one; your first keeps paying out too)
@@ -32,8 +32,11 @@ Same wallet, same recovery phrase — this derives a brand-new identity from it,
 With your API key loaded as in [Get a testnet certificate](get-a-testnet-certificate.md):
 
 ```
+mv session-chain.pem session-chain-miner-0.pem
 sf-node obtain --count 1 --keyfile miner-1/ml-dsa-hot.key.enc
 ```
+
+The first line moves your current session certificate aside. It belongs to `miner-0`, and a node whose session certificate doesn't match the key it mines with won't start. `obtain` then gets a new one for `miner-1` along with its certificate, which uses one more certificate from your allowance.
 
 Name the key file: without it, `obtain` asks for a certificate for the identity your node is mining on now. The certificate installs itself into `miner-1/` (the certificates that signed it are already in `certs/`) — nothing to copy.
 
@@ -58,11 +61,19 @@ Your node comes back up on the new certificate and starts mining again.
 
 ## Switching back
 
-Rotation isn't one-way. Every identity you've set up stays on disk, so `sf-node rotate --to 0` returns you to your first one. Only useful if that certificate still has blocks left, but the door's open.
+Rotation isn't one-way. Every identity you've set up stays on disk, so `sf-node rotate --to 0` returns you to your first one, once you swap the session certificates back:
+
+```
+mv session-chain.pem session-chain-miner-1.pem
+mv session-chain-miner-0.pem session-chain.pem
+sf-node rotate --to 0
+```
+
+Then restart the node. This is only useful if that identity's certificate still has blocks left.
 
 ## Trouble?
 
-Every `rotate refused` message ends with the commands that set up that identity: the same ones as steps 1 and 2 above.
+Every `rotate refused` message says what's missing; steps 1 and 2 above fix it.
 
 - **"rotate refused: no usable certificate at miner-1 … Staged: …"** — nothing usable is set up under that number. `Staged:` lists the identities that are. Run steps 1 and 2 for the number you're rotating to.
 - **"rotate refused: miner-1 is staged but unusable: no ml-dsa-hot.key.enc"** — step 1 hasn't been completed for this identity: run the `sf-node import` line.

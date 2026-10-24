@@ -28,7 +28,7 @@ Only the things the node actually needs cross from cold to hot. The things that 
 |---|---|---|
 | **Recovery phrase** (24 words) | Cold — protected like a critical secret (see below) | Everything. Whoever has it has all your keys. |
 | **Reward (spending) key** (`airgap-out/miner-0/ml-dsa-payout.key.enc`) | Cold — never moves | Spending the 7fCOIN you mine. |
-| **Node signing key** (`airgap-out/miner-0/transport.json`, encrypted) | Carried to the hot node and imported | Signing blocks as your node. On the hot node it's re-encrypted with your node-startup password. |
+| **Node signing key** (`airgap-out/miner-0/transport.json`, encrypted) | Carried to the hot node and imported | Signing blocks as your node. On the hot node it's re-encrypted with your boot password. |
 | **Certificate + chain** | On the hot node | Public — lets your node join and mine. |
 
 ## Why this is safe
@@ -58,11 +58,11 @@ This writes, as on testnet, `airgap-out/miner-0/transport.json` (your node key, 
 
 **Carry to the hot node** (USB, one direction [2]): copy **only `transport.json`** over. **Leave the recovery phrase and the reward key on the cold machine** — they never touch a networked computer.
 
-**On the hot node:** `sf-node import transport.json`, get your certificate with `sf-node obtain`, then `sf-node init` and `sf-node start` (exactly as in [Get a testnet certificate](get-a-testnet-certificate.md) and [Run your node](run-your-node.md)).
+**On the hot node:** `sf-node import transport.json`, get your certificate with `sf-node obtain`, then `sf-node init` and `sf-node start`, as in [Get a testnet certificate](get-a-testnet-certificate.md) and [Run your node](run-your-node.md).
 
 ## Spending what you mine
 
-Rewards pile up at your payout address, which is public — but the key to **spend** them lives only on your cold machine. You sign a spend offline and broadcast it from an online machine, so the spending key is never exposed.
+Rewards pile up at your payout address, which is public. The key that **spends** them stays on your cold machine, so it's never exposed to a networked computer.
 
 ## Habits that keep it safe
 
