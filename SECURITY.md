@@ -11,7 +11,7 @@ Seven Fortunas takes the security of 7fchain and its users seriously. If you fin
 
 Please include:
 
-- what's affected (program and release, for example `sf-node 0.2.1 (ad9a103)`, or the service's address);
+- what's affected (program and release, for example `sf-node 0.2.930 (19237f1)`, or the service's address);
 - the steps to reproduce it, or a proof of concept;
 - what an attacker could do with it;
 - how to reach you, and how you'd like to be credited.

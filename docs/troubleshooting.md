@@ -14,7 +14,15 @@ On Linux or WSL, open a new terminal so it picks up the `PATH` that `setup.sh` s
 
 ### `no 7fchain release is built for {OS}/{ARCH}`
 
-You downloaded the archive for another platform. Check `uname -sm` against the table in [Update your miner](update-your-miner.md#1-download-the-new-release). On Windows, use [WSL](install-wsl.md).
+7fchain runs on 64-bit Linux (x86_64 or aarch64). On Windows, use [WSL](install-wsl.md).
+
+### `cannot execute binary file: Exec format error`
+
+You downloaded the archive for another platform. Check `uname -sm` against the table in [Update your miner](update-your-miner.md#1-download-the-new-release) and download the right one.
+
+### ``version `GLIBC_2.34' not found``
+
+Your Linux is too old for this release. It needs Ubuntu 22.04, Debian 12 or newer.
 
 ### `… bundle looks incomplete.`
 
@@ -25,6 +33,14 @@ The archive didn't unpack fully. Download it again, [verify it](verify-your-down
 Don't run it. Delete the archive and download it again. More in [Verify your download](verify-your-download.md).
 
 ## Wallet and identity
+
+### `No wallet found at: …`
+
+Run `cd ~/7fchain/testnet/l1` first, then the command again.
+
+### `Failed to load wallet DB: decryption failed …`
+
+Wrong wallet passphrase: the one you set in `sf-wallet init`.
 
 ### `Wallet DB already exists at: …`
 
@@ -46,7 +62,7 @@ Almost always a mistyped transport password: run `sf-node import` again and type
 
 This identity is already imported. There's nothing to do. Add `--force` only if you mean to replace it.
 
-### I forgot my node-startup password.
+### I forgot my boot password.
 
 Import the identity again and set a new one: `sf-node import airgap-out/miner-0/transport.json --force`. You need the transport password for that. Forgot that too? On the wallet machine, `sf-wallet miner-export --miner-index 0 --force` writes the same identity again with a new transport password.
 
@@ -62,7 +78,7 @@ The key was mistyped. Load it again and paste it carefully.
 
 ### `HTTP 429 … quota {used}/{max}`
 
-Your key has used its certificate allowance, or you asked for more certificates than it has left. Try a smaller `--count`, or ask the person who invited you for more.
+Your key has used its certificate allowance, or you asked for more certificates than it has left. Try a smaller `--count`, or ask the person who invited you for more. Your node's first `obtain` also uses one certificate, for its session certificate.
 
 ### `HTTP 429 … rate limit`
 
@@ -78,7 +94,7 @@ Import your identity first: `sf-node import airgap-out/miner-0/transport.json`.
 
 ### `Failed to decrypt {keyfile}: …`
 
-Wrong node-startup password: it's the one you set during `sf-node import`.
+Wrong boot password: it's the one you set during `sf-node import`.
 
 ### `refusing to install: … a different certificate for the same key`
 
@@ -100,7 +116,7 @@ Run `sf-node init` once, then start again.
 
 ### `Failed to decrypt ML-DSA key: decryption failed: wrong password or corrupted keyfile`
 
-Wrong node-startup password: it's the one you set during `sf-node import`.
+Wrong boot password: it's the one you set during `sf-node import`.
 
 ### `No miner identity is staged under {dir} …`
 
@@ -124,7 +140,11 @@ Usually a certificate from before a testnet restart. Follow steps 6 and 7 of [Up
 
 ### `[node] FATAL: … this node has a miner chain but no session_x509_chain`
 
-Run `sf-node obtain --count 1` with your API key loaded; it also gets the node's session certificate. Then start again. If `obtain` says `session chain already at {path}`, run `sf-node init` (it records that file in your config) and start again.
+Run `sf-node obtain --count 1` with your API key loaded; it also gets the node's session certificate. Then start again. If `obtain` says `session chain already at {path}`, run `sf-node init` (it records that file in your config, and resets any settings you changed by hand) and start again.
+
+### `[node] FATAL: the cert this node presents is not for its hot key …`
+
+Your `session-chain.pem` belongs to another identity, usually after `sf-node rotate`. Follow step 2 of [Rotate your certificate](rotate-your-certificate.md#2-get-its-certificate): move it aside and run `sf-node obtain` for the identity you mine with.
 
 ### `[node] FATAL: this node has no usable certificate spine.`
 
@@ -140,6 +160,10 @@ Another node is already running with this home or these ports. Find it with `pgr
 
 ## Syncing and peers
 
+### My node stays at height 496
+
+Releases before `testnet-2026-10-22` can't read block 497. Install the new release with plain `./setup.sh` ([Update your miner](update-your-miner.md)): your chain is kept and syncs on from 496.
+
 ### `[trusted-tip] no trusted peer found — node is up and waiting for a trusted peer to appear …`
 
 This machine can't look up the network's hubs, `node01` to `node07.sevenfortunas.com`. Check your internet connection and DNS. The node checks again every 30 seconds and syncs as soon as it finds them.
@@ -154,7 +178,7 @@ Tor isn't running on this machine, so onion addresses can't be reached. Start To
 
 ### `[trusted-tip] syncing — my height {h}, trusted max {m} (gap {g})`
 
-Normal: your node is downloading the chain. It starts mining when it prints `[trusted-tip] OK: local chain == consensus tip`.
+Normal: your node is downloading the chain. It starts mining after a line beginning `[trusted-tip] OK:`.
 
 ### `… EXCEEDS auto-reorg cap … RESTART THE NODE to apply it`
 
@@ -164,7 +188,7 @@ Your node went down a different branch of the chain. Start it again: it rolls ba
 
 ### How do I know my node is mining?
 
-After `[trusted-tip] OK: local chain == consensus tip`, it prints `[miner] mining block {h}...`. When it wins one: `[miner] FOUND block {h}!`, then `[miner] block {h} stored.` Your blocks show on the [Miners page](https://explore.sevenfortunas.com/miners) under your payout address.
+After a line beginning `[trusted-tip] OK:`, it prints `[miner] mining block {h}...`. When it wins one: `[miner] FOUND block {h}!`, then `[miner] block {h} stored.` Your blocks show on the [Miners page](https://explore.sevenfortunas.com/miners) under your payout address.
 
 ### `[miner] our cert is within the last {n} block(s) of the tip — in cooldown …`
 
@@ -180,7 +204,11 @@ Run `sf-node obtain --count 1`. The node picks the new certificate up at the nex
 
 ### `[miner] every certificate at miner-{a} is used up. miner-{b} has a usable one …`
 
-Run `sf-node rotate --to {b}`, then restart the node.
+Run `sf-node rotate --to {b}`, then restart the node. First follow step 2 of [Rotate your certificate](rotate-your-certificate.md#2-get-its-certificate), so the node has a session certificate for that identity.
+
+### `sf-node certs` says `not yet valid`, or `[miner] our block {h} rejected by validator: block timestamp …`
+
+Your computer's clock is wrong. Turn on automatic date and time, then restart the node.
 
 ### `[miner] 0 peers connected — waiting for at least one before mining`
 
@@ -258,7 +286,7 @@ Yes. Each identity has its own certificates and payout address; your node mines 
 
 ### Can I move my node to another machine?
 
-Yes. Stop the node, copy `~/7fchain` across, install the same release with `./setup.sh`, then run `sf-node init` there, which updates the paths in your config (add `--miner-index N` if you mine with an identity other than 0), and start the node. Never run the same identity on two machines at once.
+Yes. Stop the node, copy `~/7fchain` across, install the same release with `./setup.sh`, then run `sf-node init` there, which updates the paths in your config (add `--miner-index N` if you mine with an identity other than 0; re-add any peers or onion address you set by hand), and start the node. Never run the same identity on two machines at once.
 
 ### Can I start over?
 

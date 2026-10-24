@@ -9,7 +9,7 @@ You'll set up a few secrets along the way — keep them straight:
 | **24-word recovery phrase** | Restores *every* key in your wallet. |
 | **Wallet passphrase** | Encrypts the wallet file on disk; you enter it to open the wallet. |
 | **Transport password** | Protects your node's key on its way from the wallet to the node. You need it only until `sf-node import` succeeds (see step 4). |
-| **Node-startup password** | You set it when you import, and enter it every time you start the node. |
+| **Boot password** | You set it when you import, and enter it every time you start the node. |
 | **Mining-key password** *(recommended)* | Encrypts the key that spends your mining rewards. |
 
 > **Testnet vs. mainnet — where you run this matters.** On **testnet**, run everything on one ordinary machine and write your recovery phrase on paper — that's the point of practicing. On **mainnet**, run `sf-wallet init` and `sf-wallet miner-export` on an **air-gapped (never-online) machine**. Then carry only `transport.json` (your node key, encrypted) to your online "hot" node, while your **recovery phrase and your reward key never leave the air-gapped machine.** Full procedure: [Securing your keys for mainnet](securing-your-keys.md).
@@ -25,7 +25,7 @@ flowchart LR
     export --> transport["airgap-out/miner-0/transport.json<br/>node key, for the node"]
     export --> payout["airgap-out/miner-0/ml-dsa-payout.key.enc<br/>reward key, stays with the wallet"]
     transport --> import["sf-node import"]
-    import --> hot["miner-0/ml-dsa-hot.key.enc<br/>node key, under your node-startup password"]
+    import --> hot["miner-0/ml-dsa-hot.key.enc<br/>node key, under your boot password"]
 ```
 
 ## 1. Go to your node home
@@ -58,10 +58,10 @@ sf-wallet miner-export
 Enter your **wallet passphrase** to open the wallet, then use the menu **in this order**:
 
 - **3** — Set the transport password *(required)*
-- **4** — Set the mining-key password *(recommended; encrypts your reward key)* — or **6** to skip it
+- **4** — Set the mining-key password *(encrypts your reward key; don't skip it)*
 - **7** — Write the identity
 
-*(Menu options 1, 2 and 5 are just help text.)*
+*(Menu options 1, 2 and 5 are help text. Option 6 skips the mining-key password and saves your reward key unencrypted; the program itself warns against it on testnet.)*
 
 It prints your **payout address** (starts with `t1…`) — the address your mining rewards are paid to — and writes two files to `~/7fchain/testnet/l1/airgap-out/miner-0/`:
 
@@ -74,7 +74,7 @@ It prints your **payout address** (starts with `t1…`) — the address your min
 sf-node import airgap-out/miner-0/transport.json
 ```
 
-It asks for the **transport password** from step 3, then asks you to set your **node-startup password** — the one you'll type every time the node starts. It prints a **key fingerprint** and your payout address: both should match what `sf-wallet miner-export` showed. If they don't, stop and check you imported the right file.
+It asks for the **transport password** from step 3, then asks you to set this node's **boot password** — the one you'll type every time the node starts. It prints a **key fingerprint** and your payout address: both should match what `sf-wallet miner-export` showed. If they don't, stop and check you imported the right file.
 
 **Confirm it worked:**
 
@@ -84,7 +84,7 @@ ls miner-0/ imported/miner-0/
 
 You should see `ml-dsa-hot.key.enc` (your node's key) and `payout.json` (your payout address).
 
-**You're done with the transport password.** From now on your node's key is protected by the node-startup password. The transport password still opens `airgap-out/miner-0/transport.json`, though, so once the import has worked, delete that file:
+**You're done with the transport password.** From now on your node's key is protected by the boot password. The transport password still opens `airgap-out/miner-0/transport.json`, though, so once the import has worked, delete that file:
 
 ```
 rm airgap-out/miner-0/transport.json

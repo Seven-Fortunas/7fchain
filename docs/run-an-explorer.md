@@ -12,11 +12,11 @@ Make sure your node is running first (see [Run your node](run-your-node.md)) —
 sf-explorer --network testnet --node 127.0.0.1:7735 --listen 127.0.0.1:8080
 ```
 
-- `--network testnet` — the network to display.
+- `--network testnet` — use testnet's defaults.
 - `--node 127.0.0.1:7735` — your local node's testnet RPC address.
 - `--listen 127.0.0.1:8080` — serve the explorer to this machine only. Without it, the explorer listens on `0.0.0.0:8080`, so other devices on your network can open it too.
 
-Then open **http://localhost:8080** in your browser.
+Then open **http://127.0.0.1:8080** in your browser.
 
 ## Good to know
 

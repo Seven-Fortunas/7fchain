@@ -33,7 +33,7 @@ tmux new -s 7fchain
 sf-node start
 ```
 
-Enter your node-startup password as usual. Once it's running, press **`Ctrl-b`, then `d`** to detach. The node keeps running; you can close the terminal or log out.
+Enter your boot password as usual. Once it's running, press **`Ctrl-b`, then `d`** to detach. The node keeps running; you can close the terminal or log out.
 
 To look at it again:
 

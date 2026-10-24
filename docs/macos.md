@@ -1,5 +1,7 @@
 # 7fchain on macOS
 
+> **The current release, `testnet-2026-10-22`, is published for Linux only.** Its Mac downloads are added to the same release once they're built; until then a Mac can't join the testnet, because the last Mac build (`testnet-2026-10-16.2`) stops syncing at block 496. The steps below apply as soon as the Mac archives are on the [release page](https://github.com/Seven-Fortunas/7fchain/releases/tag/testnet-2026-10-22).
+
 7fchain runs natively on Macs with Apple silicon (M1 and later) and with Intel processors. Follow [Become a miner](become-a-miner.md) as everyone does; this page collects the Mac-specific details in one place.
 
 ## Which download
@@ -20,7 +22,7 @@ uname -sm
 Downloading with `curl` in Terminal is the simplest route on a Mac: macOS runs the programs straight away. Set `PLATFORM` to yours:
 
 ```
-REL=testnet-2026-10-16.2
+REL=testnet-2026-10-22
 PLATFORM=arm64-macos
 mkdir -p ~/7fchain-releases/$REL && cd ~/7fchain-releases/$REL
 curl -fLO https://github.com/Seven-Fortunas/7fchain/releases/download/$REL/7fchain-$REL-$PLATFORM.tar.gz
@@ -57,7 +59,7 @@ cd 7fchain-$REL-$PLATFORM
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 ```
 
-Then open a new Terminal window. `sf-node --version` should print `sf-node 0.2.1 (ad9a103)`.
+Then open a new Terminal window. `sf-node --version` should print `sf-node 0.2.930 (19237f1)`.
 
 Now carry on with [step 2 of Become a miner](become-a-miner.md#2-create-your-wallet-and-miner-identity).
 

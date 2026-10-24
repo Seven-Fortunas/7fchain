@@ -4,7 +4,7 @@
 
 **Already mining?** To install a new release over your existing node, follow [Update your miner](update-your-miner.md).
 
-**You'll need Linux or macOS.** We publish builds for x86_64 and ARM Linux and for Apple Silicon and Intel Macs. On Windows, use Ubuntu via **Windows Subsystem for Linux (WSL)** ([install guide](install-wsl.md)).
+**You'll need Linux:** Ubuntu 22.04, Debian 12 or newer, on x86_64 or ARM. The current release is built for Linux; Macs are covered in [7fchain on macOS](macos.md). On Windows, use Ubuntu via **Windows Subsystem for Linux (WSL)** ([install guide](install-wsl.md)).
 
 > **Testnet vs. mainnet.** On testnet it's fine to run everything on your normal machine — nothing of value is at stake, so it's the place to practice. **For mainnet you'll want your keys on an air-gapped machine** — see [Securing your keys for mainnet](securing-your-keys.md).
 
@@ -21,7 +21,7 @@ flowchart LR
 
 ## 1. Download and verify
 
-Download the build from the [latest Release](https://github.com/Seven-Fortunas/7fchain/releases/latest) and check it against the published `SHA256SUMS` before running. The bundle includes the `sf-node`/`sf-wallet`/`sf-explorer` programs plus the public network files (the genesis and dev-fund configs and the network's Root, Deputy and CentCom certificates); the trusted root keys are built into the node. (Your certificate and the chain that validates it arrive later, in step 3.) Unpack it (`tar xzf`, as in [Verify your download](verify-your-download.md#then-continue)) and run `./setup.sh` once — it installs the programs and lays out your node folders.
+Download the build from the [latest Release](https://github.com/Seven-Fortunas/7fchain/releases/latest) and check it against the published `SHA256SUMS` before running. The bundle includes the `sf-node`/`sf-wallet`/`sf-explorer` programs plus the public network files (the genesis and dev-fund configs and the network's Root, Deputy and CentCom certificates) and `THIRD-PARTY-NOTICES.txt`, which lists the open-source components in the programs and their licenses; the trusted root keys are built into the node. (Your certificate and the chain that validates it arrive later, in step 3.) Unpack it (`tar xzf`, as in [Verify your download](verify-your-download.md#then-continue)) and run `./setup.sh` once — it installs the programs and lays out your node folders.
 → **Step-by-step:** [Verify your download](verify-your-download.md)
 
 ## 2. Create your wallet and miner identity
@@ -58,8 +58,7 @@ Each certificate mines a limited number of blocks. When yours is used up, get an
 
 - **Rewards.** How your rewards arrive, and when you can spend them: [Your mining rewards](rewards.md).
 - **Keep it running.** Run the node so it survives closing the terminal: [Keep your node running](keep-running.md). On a Mac, see also [7fchain on macOS](macos.md).
-
-- **It's testnet.** Testnet 7fCOIN has no monetary value, so it's the place to practise.
+- **It's testnet.** Testnet 7fCOIN has no monetary value, so it's the place to practice.
 - **Your coins are yours.** Your spending keys are separate from your node's identity, so even if a certificate is revoked, coins already paid to your address stay yours.
 - **Per-cert block cap.** Each certificate mines a limited number of blocks over its life; when it's used up, your node moves to the next one it holds. [Get more](get-a-testnet-certificate.md#when-your-certificates-run-out) in advance, while the node runs, so there's no downtime.
 - **Cooldown.** After you mine a block, your certificate waits a while before it can mine again — spreading rewards across the community so small miners get a fair share.

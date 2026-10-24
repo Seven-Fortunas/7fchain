@@ -9,7 +9,7 @@ sequenceDiagram
     participant You
     participant Node as sf-node obtain
     participant Reg as Registrar<br/>obtain.sevenfortunas.com
-    You->>Node: API key and node-startup password
+    You->>Node: API key and boot password
     Node->>Node: Builds a certificate request,<br/>signed with your node key
     Node->>Reg: Request and API key
     Reg-->>Node: The registrar's certificate,<br/>then your miner certificate
@@ -54,7 +54,7 @@ This only checks the key's shape; the registrar checks the key itself in step 3.
 sf-node obtain --count 1
 ```
 
-Enter your **node-startup password** when asked. The node builds its certificate request from your key, sends it to the network's registrar, checks that what comes back belongs to the testnet, and installs it. You should see lines like:
+At `Enter ML-DSA keyfile password:`, type your **boot password** (the one you set during `sf-node import`). The node builds its certificate request from your key, sends it to the network's registrar, checks that what comes back belongs to the testnet, and installs it. You should see lines like:
 
 ```
 network: testnet  (home /home/you/7fchain/testnet/l1)
@@ -92,15 +92,15 @@ While the node is running it shows `?` instead of the counts, because the runnin
 sf-node obtain --count 1
 ```
 
-`--count` is how many certificates to get, at 50 blocks each: `--count 5` gets five. Each one uses one certificate from your API key's allowance, so ask only for what you'll use. You can run this while your node is running: new certificates land in `miner-0/` beside the others, and the node picks them up when it needs the next one — no restart.
+`--count` is how many certificates to get, at 50 blocks each: `--count 5` gets five. Each one uses one certificate from your API key's allowance, and your node's first `obtain` uses one more, for its session certificate. Ask only for what you'll use. You can run this while your node is running: new certificates land in `miner-0/` beside the others, and the node picks them up when it needs the next one — no restart.
 
 ## Trouble?
 
 - **`pass --key <api-key> or set SF_OBTAIN_KEY`** — the key isn't loaded in this terminal. Repeat step 2 in the same terminal you run step 3 from.
 - **"HTTP 401 … unknown API key"** — the key was mistyped. Repeat step 2 and paste it again.
 - **"quota"** — your key has used its certificate allowance. Ask the person who invited you.
-- **"no miner identity … Import one first"** — step 2 isn't finished: run `sf-node import airgap-out/miner-0/transport.json` from your node home.
-- **"Failed to decrypt"** — wrong node-startup password. It's the one you set during `sf-node import`.
+- **"no miner identity … Import one first"** — your miner identity isn't imported yet: run `sf-node import airgap-out/miner-0/transport.json` from your node home.
+- **"Failed to decrypt"** — wrong boot password. It's the one you set during `sf-node import`.
 - **"refusing to install: … a different certificate for the same key"** — the registrar returned a certificate that conflicts with one your node already holds. Nothing was installed. Report it, with the full message, through the feedback form in [Become a miner](become-a-miner.md).
 
 ## Next

@@ -34,7 +34,7 @@ flowchart LR
 4. [Run your node](docs/run-your-node.md).
 5. Watch your blocks on the [explorer](https://explore.sevenfortunas.com/miners), and [keep your node running](docs/keep-running.md).
 
-The full walkthrough is [Become a miner](docs/become-a-miner.md). Builds are published for `x86_64-linux`, `aarch64-linux`, `arm64-macos` and `x86_64-macos`; on Windows, use [WSL](docs/install-wsl.md). Mac users, see [7fchain on macOS](docs/macos.md).
+The full walkthrough is [Become a miner](docs/become-a-miner.md). The current release is built for Linux: `x86_64-linux` and `aarch64-linux` (Ubuntu 22.04, Debian 12 or newer). On Windows, use [WSL](docs/install-wsl.md). Mac users, see [7fchain on macOS](docs/macos.md).
 
 ## How it fits together
 
@@ -57,19 +57,15 @@ Layer 2 chains settle on Layer 1 and carry the fast, cheap, stable payments. Two
 - **Run a miner.** Help secure the network and earn 7fCOIN. CPU-mineable, certificate-gated, with a cooldown that keeps rewards spread across the community. → [Become a miner](docs/become-a-miner.md)
 - **Build on Layer 2.** Seven Fortunas operates Layer 2 networks for enterprises and governments, and partners can run their own.
 
-## Already mining? The testnet restarted from block 1
+## Network status
 
-With release `testnet-2026-10-16.2` the testnet started again from block 1, and
-certificates from earlier releases no longer work. If you mined before, three
-things to do, step by step in **[Update your miner](docs/update-your-miner.md)**:
+| | |
+|---|---|
+| Current release | [`testnet-2026-10-22`](https://github.com/Seven-Fortunas/7fchain/releases/tag/testnet-2026-10-22) (Linux). Every miner needs it: earlier releases stop syncing at block 496. |
+| Last testnet restart | `testnet-2026-10-16.2`. Updating from that release or later keeps your chain: run plain `./setup.sh`. |
+| Live height and miners | [explore.sevenfortunas.com](https://explore.sevenfortunas.com/) |
 
-1. Run `./setup.sh --clean` from the new release. Plain `./setup.sh` would keep
-   the old chain database, and the node would not join the new chain.
-2. Move your old certificates out of `miner-0/`.
-3. Get new ones with `sf-node obtain`. Your API key's allowance has been reset.
-
-Your wallet and keys are kept. New miners can ignore this and follow
-[Become a miner](docs/become-a-miner.md).
+**Already mining?** Stop your node, run `./setup.sh` from the new release, and start it again: [Update your miner](docs/update-your-miner.md).
 
 ## Papers
 
