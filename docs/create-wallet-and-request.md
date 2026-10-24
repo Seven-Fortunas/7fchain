@@ -46,7 +46,7 @@ sf-wallet init
 - **Don't write anything down during the building steps** — not the word sets in step 1, nor the candidates after. When it finishes, it shows the complete phrase under **"WRITE THESE 24 WORDS ON PAPER NOW"**: that is the one to write down.
 - **Write the finished phrase on paper.** It controls all your keys; never put it in cloud storage, a screenshot, or a password manager.
 - Already have a phrase? `sf-wallet init --import` accepts an existing 12- or 24-word BIP-39 phrase instead.
-- It asks you to set a **wallet passphrase** (separate from the recovery phrase) and type it twice. Write that down too. **Have it ready before you start:** it can't be empty, and if it's empty or the two entries don't match, `sf-wallet init` stops without creating the wallet. Running it again builds a *new* phrase, so cross out the words you wrote and write the new ones.
+- It asks you to set a **wallet passphrase** (separate from the recovery phrase) and type it twice. Keep it separate from the recovery phrase, for example in a password manager, never on the same paper. **Have it ready before you start:** it can't be empty, and if it's empty or the two entries don't match, `sf-wallet init` stops without creating the wallet. Running it again builds a *new* phrase, so cross out the words you wrote and write the new ones.
 - It prints your testnet address (starts with `t1…`).
 
 ## 3. Create your miner identity

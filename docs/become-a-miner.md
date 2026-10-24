@@ -36,7 +36,7 @@ A certificate is what lets your node join and mine. **On testnet it's free.** On
 
 ## 4. Run your node
 
-Create your node's config and start it — it joins the network, catches up to the current tip, and begins mining. Blocks you win pay your reward address.
+Create your node's config and start it — it joins the network, catches up to the current tip, and begins mining. Blocks you win pay your payout address.
 → **Step-by-step:** [Run your node](run-your-node.md)
 
 ## 5. Make your node reachable (optional)
@@ -58,7 +58,6 @@ Each certificate mines a limited number of blocks. When yours is used up, get an
 
 - **Rewards.** How your rewards arrive, and when you can spend them: [Your mining rewards](rewards.md).
 - **Keep it running.** Run the node so it survives closing the terminal: [Keep your node running](keep-running.md). On a Mac, see also [7fchain on macOS](macos.md).
-- **It's testnet.** Testnet 7fCOIN has no monetary value, so it's the place to practice.
 - **Your coins are yours.** Your spending keys are separate from your node's identity, so even if a certificate is revoked, coins already paid to your address stay yours.
 - **Per-cert block cap.** Each certificate mines a limited number of blocks over its life; when it's used up, your node moves to the next one it holds. [Get more](get-a-testnet-certificate.md#when-your-certificates-run-out) in advance, while the node runs, so there's no downtime.
 - **Cooldown.** After you mine a block, your certificate waits a while before it can mine again — spreading rewards across the community so small miners get a fair share.
@@ -67,6 +66,6 @@ Each certificate mines a limited number of blocks. When yours is used up, get an
 
 Stuck, confused, or have an idea? Tell us in our [short feedback form](https://forms.gle/acBoEKEMBeh6piE67) — it takes a minute, and you can stay anonymous. Please don't include your API key, recovery phrase, passwords, or key files.
 
-Found a security issue? Please don't post it anywhere public. [Report it privately on GitHub](https://github.com/Seven-Fortunas/7fchain/security/advisories/new) (needs a GitHub account), or use the feedback form above.
+Found a security problem? Don't post it publicly: report it as described in [SECURITY.md](../SECURITY.md).
 
 For the full design, see the [L1 White Paper](../papers/7fchain-l1-white-paper.md).

@@ -1,6 +1,6 @@
 # 7fchain
 
-**The Post-Quantum Blockchain for the People.**
+**The post-quantum blockchain anyone can mine.**
 
 7fchain is a proof-of-work blockchain that is quantum-resistant from its first block. It's built to be mined by ordinary people on ordinary computers — an old laptop or a $20/month server, not ASIC farms or data centers. Layer 1 is a lean post-quantum settlement layer; the 7F L2 Lattice on top is where fast, cheap, stable everyday payments live.
 
@@ -61,11 +61,11 @@ Layer 2 chains settle on Layer 1 and carry the fast, cheap, stable payments. Two
 
 | | |
 |---|---|
-| Current release | [`testnet-2026-10-22`](https://github.com/Seven-Fortunas/7fchain/releases/tag/testnet-2026-10-22) (Linux). Every miner needs it: earlier releases stop syncing at block 496. |
-| Last testnet restart | `testnet-2026-10-16.2`. Updating from that release or later keeps your chain: run plain `./setup.sh`. |
+| Current release | [`testnet-2026-10-22`](https://github.com/Seven-Fortunas/7fchain/releases/tag/testnet-2026-10-22) (Linux), `sf-node 0.2.930 (19237f1)` |
+| Running since | 2026-10-16, with no restart since |
 | Live height and miners | [explore.sevenfortunas.com](https://explore.sevenfortunas.com/) |
 
-**Already mining?** Stop your node, run `./setup.sh` from the new release, and start it again: [Update your miner](docs/update-your-miner.md).
+**Already mining?** Run `sf-node --version`. If it prints a version older than `0.2.930`, your node stops syncing at block 496: stop it, run plain `./setup.sh` from the new release (your chain and keys are kept), and start it again. Details: [Update your miner](docs/update-your-miner.md).
 
 ## Papers
 

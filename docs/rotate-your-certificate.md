@@ -4,11 +4,11 @@
 
 **Rotation** moves your node onto a *different identity*, with its own key, certificates and payout address. Use it to start a new identity, to recover if a certificate is ever revoked, or to switch between identities you've already set up. It takes three steps.
 
-> **Your coins are safe.** Rotating changes your node's *identity*, not your wallet. Coins already paid to your reward address stay yours no matter what happens to the certificate that earned them. A new identity gets its own reward address; both keep paying out.
+> **Your coins are safe.** Rotating changes your node's *identity*, not your wallet. Coins already paid to your payout address stay yours no matter what happens to the certificate that earned them. A new identity gets its own payout address; both keep paying out.
 
 ## Before you start
 
-You can prepare the new identity **before** you need it. Then its certificate is sitting ready and rotation takes seconds.
+You can do step 1 before you need it. Do steps 2 and 3 together: after step 2, your node can't restart on its current identity until you rotate.
 
 Identities are numbered: your first is `miner-0`, your next is `miner-1`, then `miner-2`, and so on. Pick the next unused number and use it everywhere below. These examples use **1**.
 
@@ -36,7 +36,7 @@ mv session-chain.pem session-chain-miner-0.pem
 sf-node obtain --count 1 --keyfile miner-1/ml-dsa-hot.key.enc
 ```
 
-The first line moves your current session certificate aside. It belongs to `miner-0`, and a node whose session certificate doesn't match the key it mines with won't start. `obtain` then gets a new one for `miner-1` along with its certificate, which uses one more certificate from your allowance.
+The first line moves your current session certificate aside. It belongs to `miner-0`, and a node whose session certificate doesn't match the key it mines with won't start. `obtain` then gets a new one for `miner-1` along with its certificate. This uses two certificates from your allowance: one miner certificate and one session certificate.
 
 Name the key file: without it, `obtain` asks for a certificate for the identity your node is mining on now. The certificate installs itself into `miner-1/` (the certificates that signed it are already in `certs/`) — nothing to copy.
 
@@ -79,7 +79,7 @@ Every `rotate refused` message says what's missing; steps 1 and 2 above fix it.
 - **"rotate refused: miner-1 is staged but unusable: no ml-dsa-hot.key.enc"** — step 1 hasn't been completed for this identity: run the `sf-node import` line.
 - **"… unusable: no miner chain (\*.pem)"** — step 2 hasn't been run for this identity yet.
 - **"… unusable: no chain here certifies this directory's hot key (cert/key mismatch)"** — the certificate in `miner-1/` belongs to a different identity. Re-run step 2 with `--keyfile` naming this identity's key.
-- **Node still won't mine after restarting** — it needs to sync to the current tip first, which is normal. If it says it's waiting for a trusted peer, the network's peers will pick it up automatically.
+- **Node still won't mine after restarting** — it needs to sync to the current tip first, which is normal. If it's waiting for a trusted peer, see [Syncing and peers](troubleshooting.md#syncing-and-peers).
 
 ---
 

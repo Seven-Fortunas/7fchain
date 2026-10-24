@@ -100,7 +100,7 @@ printf 'API key: '; read -rs SF_OBTAIN_KEY; echo; export SF_OBTAIN_KEY
 sf-node obtain --count 1
 ```
 
-At `Enter ML-DSA keyfile password:`, type your boot password. You should see `installed miner-0/ ...` and then `session chain already at .../session-chain.pem`: your node keeps the session certificate it already has. When you're done, run `unset SF_OBTAIN_KEY`. Details and error messages: [Get a testnet certificate](get-a-testnet-certificate.md).
+At `Enter ML-DSA keyfile password:`, type your boot password. You should see `installed miner-0/ ...` and then `session chain already at .../session-chain.pem`: your node keeps the session certificate it already has. As soon as it finishes, run `unset SF_OBTAIN_KEY`, before you start the node. Details and error messages: [Get a testnet certificate](get-a-testnet-certificate.md).
 
 ## 8. Start your node
 

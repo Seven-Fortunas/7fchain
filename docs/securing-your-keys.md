@@ -40,13 +40,13 @@ Only the things the node actually needs cross from cold to hot. The things that 
 Your recovery phrase restores every key you have. Protect it as you would a critically important secret, **scaled to how much value it guards**:
 
 - For a **small amount**, that might mean writing the words on paper and putting them in a safe.
-- For a **large amount**, it might mean stamping the words onto **metal plates** (fireproof and waterproof) sealed with **tamper-evident stickers**, and **splitting them across separate locations** — for example, some of the words in a safe at home and the rest in a safety-deposit box at a bank — so no single place ever holds the whole phrase [1].
+- For a **large amount**, it might mean stamping the words onto **metal plates** (fireproof and waterproof) sealed with **tamper-evident stickers**, with **two complete copies in two separate places**, for example a safe at home and a safety-deposit box. Don't split the words between places: losing either half would lose the coins.
 
 > **A note on hardware wallets.** Electronic hardware wallets such as Ledger and Trezor are built for Bitcoin- and Ethereum-style keys and **don't support 7fchain's post-quantum keys** — don't rely on one for 7fchain. Secure physical backup of your recovery phrase (paper or metal) is the method.
 
 ## The workflow
 
-**On the cold (air-gapped) machine** — carry the verified programs in on a clean USB drive [2], then:
+**On the cold (air-gapped) machine** — carry the verified programs in on a clean USB drive, then:
 
 ```
 cd ~/7fchain/mainnet/l1
@@ -56,7 +56,7 @@ sf-wallet miner-export               # set passwords, write the identity (same m
 
 This writes, as on testnet, `airgap-out/miner-0/transport.json` (your node key, encrypted) and `airgap-out/miner-0/ml-dsa-payout.key.enc` (your **secret reward key**).
 
-**Carry to the hot node** (USB, one direction [2]): copy **only `transport.json`** over. **Leave the recovery phrase and the reward key on the cold machine** — they never touch a networked computer.
+**Carry to the hot node** (USB, one direction): copy **only `transport.json`** over. **Leave the recovery phrase and the reward key on the cold machine** — they never touch a networked computer.
 
 **On the hot node:** `sf-node import transport.json`, get your certificate with `sf-node obtain`, then `sf-node init` and `sf-node start`, as in [Get a testnet certificate](get-a-testnet-certificate.md) and [Run your node](run-your-node.md).
 
@@ -66,12 +66,5 @@ Rewards pile up at your payout address, which is public. The key that **spends**
 
 ## Habits that keep it safe
 
-- **Keep the cold machine offline forever.** An old laptop, wiped and with a fresh Ubuntu install [3], kept off every network, is enough.
-- **Move files one direction at a time** on a USB drive, and treat the drive itself as a risk — use a fresh or freshly-wiped one each time [2]. Never connect the cold machine to any network, even briefly.
-
-### Learn more
-
-- **[1] Metal recovery-phrase backup plates** — https://www.youtube.com/results?search_query=metal+seed+phrase+backup+plate
-- **[2] USB drives — the risk, and how to clean one.** A USB stick can quietly carry malware between computers ("BadUSB"). Before moving files, use a brand-new drive or wipe one clean by reformatting it. How to wipe/format a USB drive: https://www.youtube.com/results?search_query=how+to+format+wipe+usb+drive · The risk explained: https://www.youtube.com/results?search_query=badusb+attack+explained
-- **[3] Installing Ubuntu on an old laptop** — https://www.youtube.com/results?search_query=install+ubuntu+on+old+laptop
-- **Air-gapped computers explained** — https://www.youtube.com/results?search_query=air+gapped+computer+explained
+- **Keep the cold machine offline forever.** An old laptop, wiped and with a fresh [Ubuntu install](https://ubuntu.com/tutorials/install-ubuntu-desktop), kept off every network, is enough.
+- **Move files one direction at a time** on a USB drive, and treat the drive itself as a risk — use a brand-new or freshly reformatted one each time, because a USB drive can carry malware between computers. Never connect the cold machine to any network, even briefly.

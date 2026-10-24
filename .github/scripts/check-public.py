@@ -33,7 +33,7 @@ BANNED = re.compile(
     r"(?:not|isn't|is not) live|in a future release|eventually)\b",
     re.IGNORECASE,
 )
-ALLOWED_TAGS = {"br", "details", "summary", "sup", "sub", "kbd", "a", "img", "p", "b", "i"}
+ALLOWED_TAGS = {"br", "details", "summary", "sup", "sub", "kbd", "a", "img", "p", "b", "i", "code"}
 FENCE = re.compile(r"^```.*?^```[^\n]*$", re.MULTILINE | re.DOTALL)
 CODE_SPAN = re.compile(r"`[^`\n]*`")
 LINK = re.compile(r"\]\(([^)\s]+)\)")

@@ -1,6 +1,6 @@
 # Verify Your Download
 
-Always verify a binary before you run it. Every 7fchain release ships a `SHA256SUMS` file listing the exact SHA-256 fingerprint of each archive. Verifying confirms your download is the genuine, unmodified file — not something corrupted in transit or swapped by an attacker.
+Always verify a binary before you run it. Every 7fchain release ships a `SHA256SUMS` file listing the exact SHA-256 fingerprint of each archive. Verifying confirms your download is exactly the file published on the Releases page, not damaged or swapped on the way to you. It can't protect you from a fake page, so download only from the address below.
 
 **Only ever download from the official Releases page:**
 https://github.com/Seven-Fortunas/7fchain/releases/latest

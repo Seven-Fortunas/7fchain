@@ -1,6 +1,6 @@
 # Run Your Node
 
-This is **step 4** of [Become a miner](become-a-miner.md). It assumes you've run `./setup.sh`, created your wallet and miner identity ([step 2](create-wallet-and-request.md)), and got your certificate with `sf-node obtain` ([step 3](get-a-testnet-certificate.md)).
+This is **step 4** of [Become a miner](become-a-miner.md). It assumes you've run `./setup.sh`, created your wallet and miner identity ([step 2](create-wallet-and-request.md)), and gotten your certificate with `sf-node obtain` ([step 3](get-a-testnet-certificate.md)).
 
 ## 1. Your certificate is already in place
 
@@ -25,14 +25,13 @@ This writes `node-config.json`, pointing the node at your node home, where it fi
 sf-node start ~/7fchain/testnet/l1/node-config.json
 ```
 
-At `Enter ML-DSA keyfile password:`, type your **boot password** (the one you set during `sf-node import`). At boot the node verifies your certificate chains to a trusted root, connects to the network's peers, catches up to the current tip, and **then** begins mining. It won't mine until it's synced — if peers aren't reachable yet it waits, which is normal. Blocks you win pay your reward address.
+At `Enter ML-DSA keyfile password:`, type your **boot password** (the one you set during `sf-node import`). At boot the node verifies your certificate chains to a trusted root, connects to the network's peers, catches up to the current tip, and **then** begins mining. It won't mine until it's synced — if peers aren't reachable yet it waits, which is normal. Blocks you win pay your payout address.
 
 Leave it running to keep mining. Step 4 shows you how to stop it and start it back up.
 
-## 4. Check that it syncs, stops, and starts again
+## 4. Check a restart
 
-Worth doing once, the first time you run a node. It takes a few minutes and
-proves the whole path works before you leave the node to itself.
+Do this once, the first time you run a node.
 
 **Watch it catch up.** As your node pulls the chain it prints a line for each
 block it takes:
@@ -65,9 +64,7 @@ same thing — both take the same clean shutdown, which saves the node's address
 book and closes the database properly. Don't use `kill -9`.
 
 **Start it again**, with the same command as step 3. It asks for your
-boot password again. This is the part worth watching: on a restart the
-node rebuilds its state from the database on disk instead of from the network,
-which is a different path from a first start. You should see:
+boot password again. The node reloads the chain from disk. You should see:
 
 ```
 [genesis] DB genesis matches signed config (...)
@@ -75,8 +72,7 @@ Chain reloaded. Height: 137, UTXOs: 412
 ```
 
 with whatever height you had reached. It then reconnects and carries on from
-there — it does not download the chain again. A node that starts, stops, and
-starts back up with its height intact has exercised the parts that matter.
+there — it does not download the chain again.
 
 ## What your node does
 
@@ -102,5 +98,5 @@ stateDiagram-v2
 ## Trouble?
 
 - **"command not found"** — on Linux or WSL, open a new terminal so your `PATH` picks up the programs `setup.sh` installed. On macOS, run `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc` once, then open a new terminal.
-- **Stuck "waiting for a trusted peer"** — your node can't reach the network's hubs on port 7788. Check that this machine can make outgoing connections on that port; the node keeps trying and syncs as soon as it connects.
+- **Stuck "waiting for a trusted peer"** — see [Syncing and peers](troubleshooting.md#syncing-and-peers).
 - **Anything else** — see [Troubleshooting and FAQ](troubleshooting.md).

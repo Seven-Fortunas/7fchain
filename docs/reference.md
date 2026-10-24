@@ -77,6 +77,8 @@ Your node home is `~/7fchain/testnet/l1`.
 | `sf-node.pid` | The running node's process number; removed when it stops | No |
 | `inbox/`, `outbox/` | Certificate requests and replies from `sf-node obtain` | No |
 
+On a computer other people can log in to, run `chmod -R go-rwx ~/7fchain` after setup, so only your user can read these files.
+
 **Never delete `~/7fchain`.** It holds your wallet and keys. `./setup.sh --clean` is the safe way to start the chain over: it removes the chain, the peer list, the mining schedule, the network files and the old programs, and keeps your wallet, keys, identities, certificates and `node-config.json`.
 
 ## Settings in node-config.json
@@ -87,7 +89,7 @@ Edit these with the node stopped, then start it again.
 |---|---|---|
 | `listen_port` | `7788` | Port for connections from other nodes |
 | `rpc_port` | `7735` | Local port for `sf-wallet`, `sf-explorer` and `getaddrbalance` |
-| `rpc_bind` | `127.0.0.1` | Keeps that port to this machine |
+| `rpc_bind` | `127.0.0.1` | Keeps that port to this machine. Leave it: the RPC has no password, so opening it lets anyone who can reach it use your node |
 | `mining` | `true` | `false` runs the node without mining |
 | `miner_index` | `0` | Which identity mines; `sf-node rotate` sets it |
 | `seed_peers` | `[]` | Extra peers; `sf-node peers add` sets it |
@@ -100,7 +102,7 @@ Edit these with the node stopped, then start it again.
 |---|---|
 | Peer port | 7788. Outgoing connections to the hubs on this port are all a node needs |
 | Local RPC port | 7735 |
-| Network hubs | `node01` to `node07.sevenfortunas.com`, port 7788 |
+| Network hubs | `node01` to `node07.sevenfortunas.com`, port 7788; one reachable hub is enough |
 | Target time between blocks | 7 minutes |
 | Block reward | 7 7fCOIN, reduced by 7% every 70,000 blocks, with a floor of 0.07 |
 | Your share | 99% of the reward and fees; 1% goes to the development fund |

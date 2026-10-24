@@ -57,7 +57,7 @@ The SOCKS5 proxy your node dials out through runs on `127.0.0.1:9050` by
 default, which is exactly where your node already looks for it. There is nothing
 to configure for outbound connections.
 
-## 2. Publish a hidden service
+## 2. Publish an onion service
 
 Find your node's `listen_port` in `~/7fchain/testnet/l1/node-config.json`
 (`7788` unless you changed it). Then add the lines below to Tor's configuration

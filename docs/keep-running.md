@@ -54,7 +54,7 @@ A computer that sleeps stops mining until it wakes.
 
 ## 3. After a restart
 
-When the computer restarts, start the node again the same way: `tmux new -s 7fchain`, then `sf-node start`, and enter your password. The node picks up where it left off from the chain on disk, without downloading it again.
+When the computer restarts, start the node again the same way: `tmux new -s 7fchain`, then `sf-node start`, and enter your boot password. The node picks up where it left off from the chain on disk, without downloading it again.
 
 ## 4. Keep a log
 

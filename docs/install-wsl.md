@@ -6,7 +6,7 @@ The 7fchain miner runs on **Linux**, a free operating system [1]. If your comput
 
 ## 1. Open PowerShell as Administrator
 
-**PowerShell** is a Windows command window [3]. You need to open it in **Administrator** mode, which gives it permission to install software. Right-click the Start button and choose *Terminal (Admin)* or *Windows PowerShell (Admin)*. If you're not sure how, watch a short how-to video first — it's a one-time thing [4].
+**PowerShell** is a Windows command window [3]. You need to open it in **Administrator** mode, which gives it permission to install software. Right-click the Start button and choose *Terminal (Admin)* or *Windows PowerShell (Admin)*.
 
 ## 2. Install WSL and Ubuntu
 
@@ -20,7 +20,7 @@ This installs WSL and Ubuntu together. When it asks you to **restart your comput
 
 ## 3. Create your Ubuntu user
 
-After the restart, Ubuntu finishes setting up and opens its own window. It asks you to choose a **username** and **password** — this is your login for Ubuntu. That password is also what you'll type for admin commands (called **`sudo`**) [5]. Write it down.
+After the restart, Ubuntu finishes setting up and opens its own window. It asks you to choose a **username** and **password** — this is your login for Ubuntu. That password is also what you'll type for admin commands (called **`sudo`**) [4]. Write it down.
 
 > If the Ubuntu window doesn't open on its own, click the Windows **search bar**, type **Ubuntu**, and click the Ubuntu app. That's also how you open Ubuntu any time from now on — you don't need PowerShell again.
 
@@ -55,6 +55,5 @@ Then run `wsl --shutdown` in PowerShell and reopen Ubuntu.
 
 - **[1] Linux / Ubuntu** — what it is: https://ubuntu.com/desktop/wsl
 - **[2] WSL** — Microsoft's official install guide: https://learn.microsoft.com/windows/wsl/install
-- **[3] PowerShell / terminal basics** — https://www.youtube.com/results?search_query=windows+powershell+for+beginners
-- **[4] Run PowerShell as Administrator (video)** — https://www.youtube.com/results?search_query=run+powershell+as+administrator
-- **[5] What is `sudo`?** — https://www.youtube.com/results?search_query=what+is+sudo+linux
+- **[3] PowerShell** — Microsoft's introduction: https://learn.microsoft.com/powershell/scripting/overview
+- **[4] What is `sudo`?** — Ubuntu's guide: https://help.ubuntu.com/community/RootSudo

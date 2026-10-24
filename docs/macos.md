@@ -1,25 +1,12 @@
 # 7fchain on macOS
 
-> **The current release, `testnet-2026-10-22`, is published for Linux only.** Its Mac downloads are added to the same release once they're built; until then a Mac can't join the testnet, because the last Mac build (`testnet-2026-10-16.2`) stops syncing at block 496. The steps below apply as soon as the Mac archives are on the [release page](https://github.com/Seven-Fortunas/7fchain/releases/tag/testnet-2026-10-22).
+> **The current release is for Linux.** Mine on Linux, or on Windows through [WSL](install-wsl.md). The steps below apply when a release lists Mac archives (`arm64-macos`, `x86_64-macos`).
 
-7fchain runs natively on Macs with Apple silicon (M1 and later) and with Intel processors. Follow [Become a miner](become-a-miner.md) as everyone does; this page collects the Mac-specific details in one place.
+On a Mac, follow [Become a miner](become-a-miner.md) as on Linux, with these differences.
 
-## Which download
+**Your platform.** In Terminal, `uname -sm` prints `Darwin arm64` for Apple silicon (`arm64-macos`) or `Darwin x86_64` for Intel (`x86_64-macos`).
 
-Open **Terminal** (in Applications → Utilities) and run:
-
-```
-uname -sm
-```
-
-| It prints | Your platform |
-|---|---|
-| `Darwin arm64` | `arm64-macos` (Apple silicon) |
-| `Darwin x86_64` | `x86_64-macos` (Intel) |
-
-## Download in Terminal
-
-Downloading with `curl` in Terminal is the simplest route on a Mac: macOS runs the programs straight away. Set `PLATFORM` to yours:
+**Download in Terminal**, so macOS lets the programs run (set `REL` to the current release and `PLATFORM` to yours):
 
 ```
 REL=testnet-2026-10-22
@@ -29,48 +16,23 @@ curl -fLO https://github.com/Seven-Fortunas/7fchain/releases/download/$REL/7fcha
 curl -fLO https://github.com/Seven-Fortunas/7fchain/releases/download/$REL/SHA256SUMS
 ```
 
-Downloaded with Safari or another browser instead? macOS marks browser downloads for a security check. Move the files into this folder and clear the mark on the archive before you unpack it:
-
-```
-xattr -d com.apple.quarantine 7fchain-$REL-$PLATFORM.tar.gz
-```
-
-## Verify, unpack and install
-
-macOS uses `shasum` where Linux uses `sha256sum`:
+**Verify** with `shasum` instead of `sha256sum`:
 
 ```
 grep $PLATFORM.tar.gz SHA256SUMS | shasum -a 256 -c
 ```
 
-You should see your archive's name followed by **`OK`**. Then:
+If you downloaded with a browser instead, and only after the check printed `OK`, run `xattr -d com.apple.quarantine 7fchain-$REL-$PLATFORM.tar.gz` before you unpack it.
 
-```
-tar xzf 7fchain-$REL-$PLATFORM.tar.gz
-cd 7fchain-$REL-$PLATFORM
-./setup.sh
-```
-
-## Add the programs to your PATH
-
-`setup.sh` installs `sf-node`, `sf-wallet` and `sf-explorer` into `~/.local/bin`. The Mac's shell is zsh, so add that folder to your `PATH` once:
+**Add the programs to your `PATH`** once, after `./setup.sh`, then open a new Terminal window:
 
 ```
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 ```
 
-Then open a new Terminal window. `sf-node --version` should print `sf-node 0.2.930 (19237f1)`.
+**Keep the Mac awake** while it mines: start the node with `caffeinate -i sf-node start`. A MacBook with its lid closed still sleeps unless it's on power with an external display.
 
-Now carry on with [step 2 of Become a miner](become-a-miner.md#2-create-your-wallet-and-miner-identity).
-
-## Tor on a Mac
-
-Tor comes from [Homebrew](https://brew.sh): `brew install tor`. Its settings file is `$(brew --prefix)/etc/tor/torrc`, and `brew services restart tor` applies changes. The full steps are in [Make your node reachable over Tor](tor-for-your-node.md).
-
-## Keep it mining
-
-- **Stay awake:** start the node as `caffeinate -i sf-node start` so the Mac doesn't sleep while it runs. A MacBook with its lid closed sleeps anyway, unless it's on power with an external display.
-- **Keep running after you close Terminal:** `brew install tmux`, then follow [Keep your node running](keep-running.md).
+Tor and `tmux` come from [Homebrew](https://brew.sh); the [Tor guide](tor-for-your-node.md) and [Keep your node running](keep-running.md) have the Mac commands.
 
 ---
 
