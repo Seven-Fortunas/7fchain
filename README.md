@@ -10,6 +10,7 @@
 
 | I want to… | Go to |
 |---|---|
+| Get an invitation to mine | [Apply here](https://forms.gle/exb8WDioMGVV1sds6): a five-minute form |
 | Start mining | [Become a miner](docs/become-a-miner.md): five steps on an ordinary computer |
 | Install a new release over my node | [Update your miner](docs/update-your-miner.md) |
 | Fix an error message | [Troubleshooting and FAQ](docs/troubleshooting.md) |
@@ -90,4 +91,4 @@ Layer 2 chains settle on Layer 1 and carry the fast, cheap, stable payments. Two
 
 ## Free to use
 
-The 7fchain binaries are free to download and run, with no license fee. On testnet, miner certificates are free and issued by invitation (see [Become a miner](docs/become-a-miner.md)). Mainnet certificates are issued under a published policy. The white papers and documentation here are free to read and redistribute.
+The 7fchain binaries are free to download and run, with no license fee. On testnet, miner certificates are free and issued by invitation ([apply here](https://forms.gle/exb8WDioMGVV1sds6), then see [Become a miner](docs/become-a-miner.md)). Mainnet certificates are issued under a published policy. The white papers and documentation here are free to read and redistribute.

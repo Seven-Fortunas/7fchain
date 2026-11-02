@@ -21,7 +21,7 @@ sequenceDiagram
 
 ## What you need
 
-- **An API key** — a 16-character code. While the testnet is young, keys are **by invitation**: if you've been invited, you'll have received one.
+- **An API key** — a 16-character code. While the testnet is young, keys are **by invitation**: if you've been invited, you'll have received one. If not, [apply here](https://forms.gle/exb8WDioMGVV1sds6).
 - An internet connection on the machine that runs your node.
 
 Treat the key like a password: don't post it, and don't type it straight onto the command line, where it would be saved in your shell history.

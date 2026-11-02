@@ -2,6 +2,8 @@
 
 7fchain is live on **testnet** — this is how you join it. Testnet runs the same software and protocol values as mainnet; mainnet differs only in its own set of nine Root key holders. You run a real miner and earn testnet 7fCOIN, which has no monetary value. It runs on an ordinary computer — no GPU, no special hardware.
 
+**First, apply for an invitation.** While the testnet is young, miners join by invitation. Fill in the [miner application](https://forms.gle/exb8WDioMGVV1sds6); it takes about five minutes. We read every application and reply by email, usually within a week, and your invitation brings your API key. You can do steps 1 and 2 while you wait.
+
 **Already mining?** To install a new release over your existing node, follow [Update your miner](update-your-miner.md).
 
 **You'll need Linux:** Ubuntu 22.04, Debian 12 or newer, on x86_64 or ARM. The current release is built for Linux; Macs are covered in [7fchain on macOS](macos.md). On Windows, use Ubuntu via **Windows Subsystem for Linux (WSL)** ([install guide](install-wsl.md)).
@@ -31,7 +33,7 @@ Run `sf-wallet` to create your wallet (save your recovery phrase somewhere safe)
 
 ## 3. Get your testnet certificate (free)
 
-A certificate is what lets your node join and mine. **On testnet it's free.** One command, `sf-node obtain`, asks the registrar for your certificate and installs it, along with the registrar's own certificate — nothing to upload or copy. While the testnet is young, certificates are **by invitation**: you'll need the API key you were sent.
+A certificate is what lets your node join and mine. **On testnet it's free.** One command, `sf-node obtain`, asks the registrar for your certificate and installs it, along with the registrar's own certificate — nothing to upload or copy. While the testnet is young, certificates are **by invitation**: you'll need the API key from your invitation. Not invited yet? [Apply here](https://forms.gle/exb8WDioMGVV1sds6).
 → **Step-by-step:** [Get a testnet certificate](get-a-testnet-certificate.md)
 
 ## 4. Run your node
