@@ -13,6 +13,7 @@
 | Get an invitation to mine | [Apply here](https://forms.gle/exb8WDioMGVV1sds6): a five-minute form |
 | Start mining | [Become a miner](docs/become-a-miner.md): five steps on an ordinary computer |
 | Install a new release over my node | [Update your miner](docs/update-your-miner.md) |
+| Get release news by email | [Miner newsletter](https://forms.gle/wga9GdkRJEdyYCaRA): sign up with just your email |
 | Fix an error message | [Troubleshooting and FAQ](docs/troubleshooting.md) |
 | Look up a command, file or setting | [Reference](docs/reference.md) |
 | See my rewards | [Your mining rewards](docs/rewards.md) |

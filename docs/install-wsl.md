@@ -56,4 +56,4 @@ Then run `wsl --shutdown` in PowerShell and reopen Ubuntu.
 - **[1] Linux / Ubuntu** — what it is: https://ubuntu.com/desktop/wsl
 - **[2] WSL** — Microsoft's official install guide: https://learn.microsoft.com/windows/wsl/install
 - **[3] PowerShell** — Microsoft's introduction: https://learn.microsoft.com/powershell/scripting/overview
-- **[4] What is `sudo`?** — Ubuntu's guide: https://help.ubuntu.com/community/RootSudo
+- **[4] What is `sudo`?** — Ubuntu's guide (see "Where is root?"): https://documentation.ubuntu.com/server/how-to/security/user-management/

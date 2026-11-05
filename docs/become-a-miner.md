@@ -58,6 +58,7 @@ Each certificate mines a limited number of blocks. When yours is used up, get an
 
 ## Good to know
 
+- **Release news.** New releases and testnet updates come by email: [sign up for the miner newsletter](https://forms.gle/wga9GdkRJEdyYCaRA).
 - **Rewards.** How your rewards arrive, and when you can spend them: [Your mining rewards](rewards.md).
 - **Keep it running.** Run the node so it survives closing the terminal: [Keep your node running](keep-running.md). On a Mac, see also [7fchain on macOS](macos.md).
 - **Your coins are yours.** Your spending keys are separate from your node's identity, so even if a certificate is revoked, coins already paid to your address stay yours.
