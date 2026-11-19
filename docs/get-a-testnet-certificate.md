@@ -65,7 +65,7 @@ filed /home/you/7fchain/testnet/l1/certs/registrar-...pem
 wrote session chain /home/you/7fchain/testnet/l1/session-chain.pem
 ```
 
-That installs your **miner certificate** in `miner-0/`, the **registrar's certificate** that signed it in `certs/` (the `filed` line, the first time only), and a **session certificate** your node shows to its peers. Your request carries your payout address, so the certificate pays your rewards to you.
+That installs your **miner certificate** in `miner-0/`, the **registrar's certificate** that signed it in `certs/` (the `filed` line: the first time, and again when the network moves to a new registrar), and a **session certificate** your node shows to its peers. Your request carries your payout address, so the certificate pays your rewards to you.
 
 As soon as `obtain` finishes, run `unset SF_OBTAIN_KEY` (or close the terminal), so the key doesn't stay loaded or pass to a node you start from this terminal.
 

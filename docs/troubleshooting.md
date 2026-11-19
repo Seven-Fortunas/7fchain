@@ -132,6 +132,13 @@ Your key has used its certificate allowance, or you asked for more certificates 
 </details>
 
 <details>
+<summary><code>HTTP 400 … no free serial-seq left in granted range [{lo}, {hi}]</code></summary>
+
+The network's registrar has issued all the certificates it's allowed. Each registrar can issue at most 200, so no single issuer can outweigh the rest of the network. This isn't your API key's allowance (that's the `quota` message above). A new registrar takes over when one fills up: run `sf-node obtain` again later. The first certificate you get from the new registrar also files its certificate in `certs/` (a `filed` line), which is expected. If it keeps failing, report it through the feedback form in [Become a miner](become-a-miner.md).
+
+</details>
+
+<details>
 <summary><code>HTTP 429 … rate limit</code></summary>
 
 Too many requests in a minute. Wait a minute and run it again.
@@ -253,6 +260,13 @@ The network's certificates in `certs/` are missing. Run `./setup.sh` again from 
 <summary><code>[genesis] FATAL: genesis MISMATCH … This DB belongs to a different genesis</code></summary>
 
 Your chain is from before a testnet restart. Run `./setup.sh --clean` from the new release folder ([Update your miner](update-your-miner.md)).
+
+</details>
+
+<details>
+<summary><code>[chain] FATAL: reorg apply failed validation at height {h} …</code>, <code>[chain] FATAL: reorg apply could not commit the block …</code> or another <code>[chain] FATAL:</code> line</summary>
+
+The chain stored on your disk is damaged, often because the disk filled up (look for `No space left on device` earlier in the log). Start the node once more. If it stops with the same message again, [resync your chain](keep-running.md#5-resync-the-chain): your wallet, keys, certificates and settings stay.
 
 </details>
 

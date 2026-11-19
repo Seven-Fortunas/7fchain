@@ -70,7 +70,7 @@ Your node home is `~/7fchain/testnet/l1`.
 | `session-chain.pem` | The certificate your node shows other nodes | No |
 | `node-config.json` | Your node's settings | No |
 | `genesis-config.json`, `devfund-config.json` | The network definition, signed by the Root key holders | No |
-| `blocks.redb` | The chain. Your node can always download it again | No |
+| `blocks.redb` | The chain. Your node can always download it again ([Resync the chain](keep-running.md#5-resync-the-chain)) | No |
 | `peers.json` | Addresses of other nodes your node has learned | No |
 | `mining-schedule.json` | When your node mines (`sf-node mining`) | No |
 | `mempool.dat` | Transactions waiting for a block, saved at shutdown | No |
